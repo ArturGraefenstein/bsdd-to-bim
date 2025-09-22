@@ -2,28 +2,45 @@ import { type MutationResolvers } from "@generated/resolvers-types.js";
 import type { Context } from "@context/context.js";
 import { createModule } from "@binder/create-module.js";
 import { isAuthenticated } from "@modules/auth/permissions.js";
-import { Api } from "@modules/bsdd-api/swagger.types.js";
+import { getApi } from "./api.js";
 
 const convertDictionaryResolver: MutationResolvers<Context>["convertDictionary"] =
 	async (_q, params) => {
 		const { uri } = params.input;
 
-		// const dict = await fetchDictionary({ uri });
-		// const data = await dict.json();
-		// const properties = await fetchDictionaryProperties({ uri });
-		// const propData = await properties.json();
+		const api = getApi();
 
-		// const classes = await fetchDictionaryClasses({ uri });
-		// const classData = await classes.json();
+		const dict = await api.dictionaryGet({ Uri: uri });
 
-		// const classObj = await fetchClass({ uri });
-		// //console.log("DICT", classData);
+		const properties = await api.dictionaryGetWithProperties({ Uri: uri });
 
-		const api = new Api();
-		const dictFromApi = await api.api.dictionaryGet({ Uri: uri });
+		for (const property of properties.data.properties || []) {
+			const propertyUri = property.uri;
+			if (!propertyUri) continue;
 
-		const dictData = await dictFromApi.json();
-		console.log("DICT FROM API", dictData);
+			const propertyObj = await api.propertyGet({ uri: propertyUri });
+			console.log("PROPERTY", propertyObj.data);
+		}
+
+		// const classes = await api.dictionaryClassesGetWithClasses({ Uri: uri });
+
+		// for (const cls of classes.data.classes || []) {
+		// 	const classUri = cls.uri;
+		// 	if (!classUri) continue;
+
+		// 	const classObj = await api.classGet({ Uri: classUri });
+		// 	const classProperties = await api.classPropertiesGet({
+		// 		ClassUri: classUri,
+		// 	});
+		// 	const classRelations = await api.classRelationsGet({
+		// 		ClassUri: classUri,
+		// 		GetReverseRelations: true,
+		// 	});
+
+		// 	console.log("CLASS", classObj.data);
+		// 	console.log("CLASS", classProperties.data);
+		// 	console.log("CLASS", classRelations.data);
+		// }
 
 		return { converted: true };
 	};
