@@ -8978,6 +8978,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fast-xml-parser@npm:4.0.15":
+  version: 4.0.15
+  resolution: "fast-xml-parser@npm:4.0.15"
+  dependencies:
+    strnum: "npm:^1.0.5"
+  bin:
+    fxparser: src/cli/cli.js
+  checksum: 10c0/33c992f06be6508cf18d9013e5814deeee0d7e7328ed5dc53516ca934139d9265e3b53ed6869ef4756ce03bcfb931b1041cce2da5fff270b320eb26dbcb4c3d2
+  languageName: node
+  linkType: hard
+
 "fast-xml-parser@npm:^5.0.7":
   version: 5.2.5
   resolution: "fast-xml-parser@npm:5.2.5"
@@ -12213,6 +12224,7 @@ __metadata:
     "@package/config": "workspace:*"
     concurrently: "npm:9.2.0"
     eslint: "npm:9.23.0"
+    fast-xml-parser: "npm:4.0.15"
     graphql-codegen-typescript-validation-schema: "npm:0.17.1"
     patch-package: "npm:8.0.0"
     relay-compiler: "npm:19.0.0"
@@ -14989,6 +15001,13 @@ __metadata:
   version: 3.1.1
   resolution: "strip-json-comments@npm:3.1.1"
   checksum: 10c0/9681a6257b925a7fa0f285851c0e613cc934a50661fa7bb41ca9cbbff89686bb4a0ee366e6ecedc4daafd01e83eee0720111ab294366fe7c185e935475ebcecd
+  languageName: node
+  linkType: hard
+
+"strnum@npm:^1.0.5":
+  version: 1.1.2
+  resolution: "strnum@npm:1.1.2"
+  checksum: 10c0/a0fce2498fa3c64ce64a40dada41beb91cabe3caefa910e467dc0518ef2ebd7e4d10f8c2202a6104f1410254cae245066c0e94e2521fb4061a5cb41831952392
   languageName: node
   linkType: hard
 
