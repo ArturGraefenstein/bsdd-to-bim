@@ -1,0 +1,54 @@
+{
+	"name": "admin",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "react-router build",
+		"dev": "react-router dev",
+		"start": "react-router-serve ./build/server/index.js",
+		"typecheck": "react-router typegen"
+	},
+	"dependencies": {
+		"@package/design-system": "workspace:*",
+		"@package/shared": "workspace:*",
+		"@react-router/node": "7.8.0",
+		"@react-router/serve": "7.8.0",
+		"@thekeytechnology/epic-ui": "2.0.42",
+		"graphql-ws": "6.0.5",
+		"isbot": "5.1.17",
+		"jose": "6.1.0",
+		"react": "19.1.1",
+		"react-dom": "19.1.1",
+		"react-jwt": "1.3.0",
+		"react-relay": "20.1.1",
+		"react-relay-network-modern": "6.2.2",
+		"react-router": "7.8.0",
+		"relay-runtime": "20.1.1",
+		"zustand": "5.0.5"
+	},
+	"devDependencies": {
+		"@package/config": "workspace:*",
+		"@react-router/dev": "7.8.0",
+		"@rollup/plugin-graphql": "2.0.5",
+		"@types/node": "20",
+		"@types/react": "19.1.9",
+		"@types/react-dom": "19.1.7",
+		"@types/react-relay": "18.2.1",
+		"@types/relay-runtime": "19.0.2",
+		"babel-plugin-relay": "20.1.1",
+		"graphql": "16.11.0",
+		"vite": "6.3.5",
+		"vite-plugin-relay": "2.1.0",
+		"vite-plugin-svgr": "4.5.0",
+		"vite-tsconfig-paths": "5.1.4"
+	},
+	"overrides": {
+		"react": "19.1.1",
+		"react-dom": "19.1.1"
+	},
+	"resolutions": {
+		"react": "19.1.1",
+		"react-dom": "19.1.1"
+	},
+	"packageManager": "yarn@4.6.0"
+}

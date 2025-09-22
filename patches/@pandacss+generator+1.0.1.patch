@@ -1,0 +1,21 @@
+diff --git a/node_modules/@pandacss/generator/dist/index.js b/node_modules/@pandacss/generator/dist/index.js
+index 29bc9aa..7944d48 100644
+--- a/node_modules/@pandacss/generator/dist/index.js
++++ b/node_modules/@pandacss/generator/dist/index.js
+@@ -1983,7 +1983,7 @@ interface RecipeFn {
+   __type: any
+ }
+ 
+-interface JsxFactoryOptions<TProps extends Dict> {
++export interface JsxFactoryOptions<TProps extends Dict> {
+   dataAttr?: boolean
+   defaultProps?: TProps
+   shouldForwardProp?: (prop: string, variantKeys: string[]) => boolean
+@@ -2012,6 +2012,7 @@ export type JsxElements = {
+ export type ${upperName} = JsxFactory & JsxElements
+ 
+ export type ${typeName}<T extends ElementType> = JsxHTMLProps<ComponentProps<T>, JsxStyleProps>
++export type HTMLPandaProps<T extends ElementType> = JsxHTMLProps<ComponentProps<T> & UnstyledProps, JsxStyleProps>
+ 
+ export type ${variantName}<T extends ${componentName}<any, any>> = T extends ${componentName}<any, infer Props> ? Props : never
+   `

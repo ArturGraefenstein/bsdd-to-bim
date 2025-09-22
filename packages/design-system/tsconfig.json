@@ -1,0 +1,29 @@
+{
+  "extends": "@package/config/tsconfig.json",
+  "compilerOptions": {
+    "rootDirs": [
+      ".",
+    ],
+    "types": [
+      "node",
+      "vite/client"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@styled-system/*": [
+        "./styled-system/*"
+      ],
+      "@ui/*": [
+        "./src/ui/*"
+      ],
+      "@assets/*": [
+        "./src/assets/*"
+      ],
+    }
+  },
+  "include": [
+    "src",
+    "styled-system",
+    "global.d.ts"
+  ]
+}

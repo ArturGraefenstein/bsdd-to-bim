@@ -1,0 +1,61 @@
+/*
+
+Brand: #316FC1
+Gray(Mauve): #6F6D78
+
+*/
+
+export const indigo = {
+	light: {
+		1: { value: "#fcfdfe" },
+		2: { value: "#f6f9fe" },
+		3: { value: "#ecf2fc" },
+		4: { value: "#dfebfd" },
+		5: { value: "#cfe1fb" },
+		6: { value: "#bcd4f6" },
+		7: { value: "#a5c3ec" },
+		8: { value: "#83abe1" },
+		9: { value: "#316fc1" },
+		10: { value: "#2261b2" },
+		11: { value: "#2f6dbf" },
+		12: { value: "#183357" },
+		a1: { value: "#0055aa03" },
+		a2: { value: "#0055e309" },
+		a3: { value: "#0051d713" },
+		a4: { value: "#0060f020" },
+		a5: { value: "#0060ea30" },
+		a6: { value: "#005cdd43" },
+		a7: { value: "#0156ca5a" },
+		a8: { value: "#0053c27c" },
+		a9: { value: "#004db2ce" },
+		a10: { value: "#0049a6dd" },
+		a11: { value: "#004cb1d0" },
+		a12: { value: "#001e46e7" },
+	},
+	dark: {
+		1: { value: "#09111d" },
+		2: { value: "#0f1926" },
+		3: { value: "#0e2748" },
+		4: { value: "#053064" },
+		5: { value: "#0e3d77" },
+		6: { value: "#1b4b89" },
+		7: { value: "#275ba0" },
+		8: { value: "#306ec0" },
+		9: { value: "#316fc1" },
+		10: { value: "#2e62a7" },
+		11: { value: "#78b6ff" },
+		12: { value: "#cbe3ff" },
+		a1: { value: "#0012fd0d" },
+		a2: { value: "#006afa17" },
+		a3: { value: "#0571ff3b" },
+		a4: { value: "#006aff59" },
+		a5: { value: "#0b77fd6e" },
+		a6: { value: "#2584ff81" },
+		a7: { value: "#358bfe9a" },
+		a8: { value: "#3c90ffbc" },
+		a9: { value: "#3d90ffbd" },
+		a10: { value: "#3f92ffa1" },
+		a11: { value: "#78b6ff" },
+		a12: { value: "#cbe3ff" },
+	},
+};

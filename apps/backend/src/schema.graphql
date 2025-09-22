@@ -1,0 +1,88 @@
+scalar DateTime
+scalar File
+
+schema {
+	query: Query
+	mutation: Mutation
+}
+
+type Query {
+	me: User!
+	setupStatus: SetupStatus
+}
+
+type Mutation {
+	setupInstance(
+		firstName: String!
+		lastName: String!
+		email: String!
+		password: String!
+	): TokenPayload
+
+	login(
+		email: String!
+		password: String!
+		platform: SignInPlatform!
+	): TokenPayload
+
+	refreshToken(
+		refreshToken: String!
+		deviceRefreshToken: String
+	): RefreshTokenPayload!
+}
+
+#### Global Types ####
+
+type PageInfo {
+	endCursor: String
+	hasNextPage: Boolean!
+}
+
+### Old types, need to be split later ###
+
+# ============================
+# OBJECT TYPES
+# ============================
+type User {
+	id: ID!
+	firstName: String!
+	lastName: String!
+	email: String!
+	role: UserRole!
+	createdAt: DateTime!
+}
+
+type RefreshTokenPayload {
+	refreshToken: String!
+	accessToken: String!
+	deviceRefreshToken: String
+	deviceAccessToken: String
+}
+
+type TokenPayload {
+	refreshToken: String!
+	accessToken: String!
+}
+
+# ============================
+# INPUTS
+# ============================
+
+# ============================
+# ENUMS
+# ============================
+enum SetupStatus {
+	UNTOUCHED
+	INITIALIZED
+}
+
+enum UserRole {
+	USER
+	ADMIN
+	SUPER
+}
+
+enum SignInPlatform {
+	WEB
+	MOBILE
+}

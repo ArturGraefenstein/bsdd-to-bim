@@ -1,0 +1,182 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/__generated__/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGO_DB_URI")
+}
+
+enum SetupStatus {
+	UNTOUCHED
+	INITIALIZED
+}
+
+enum UserRole { 
+  USER 
+  ADMIN 
+  SUPER 
+}
+
+enum OrderType {
+  REPAIR_WITH_ESTIMATE 
+  REPAIR_IMMEDIATE 
+  INSPECTION  
+}
+
+enum Pump {
+	RL_010
+	RL_12A
+	RL_0_15
+	RL_18A
+	RL_20
+	RL_25A
+	RL_30A
+	RL_50A
+	RL_74A
+	RL_100A
+	PISTON_PUMP
+	OTHER_PUMP
+}
+
+model System {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  setupStatus  SetupStatus
+}
+
+model User {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  firstName    String
+  lastName     String
+  email        String   @unique
+  passwordHash String
+  role         UserRole     @default(USER)
+  createdAt    DateTime @default(now())
+
+
+  repairOrders        RepairOrder[]
+  inspectionReports   InspectionReport[]
+}
+
+model Device {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  name         String   @unique
+  linked       Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model Invitation {
+  id                        String        @id @default(auto()) @map("_id") @db.ObjectId
+  invitationToken           String        @unique
+  email                     String        @unique
+  role                      UserRole      @default(USER)
+  invitedAt                 DateTime      @default(now())
+  expiresAt                 DateTime
+}
+
+
+model UserSessions {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String 
+  refreshToken String
+  createdAt    DateTime @default(now())
+}
+
+model DeviceSessions {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  deviceId     String 
+  refreshToken String
+  createdAt    DateTime @default(now())
+}
+
+type Client {
+  company         String
+  contactPerson   String
+  email           String
+  phoneNumber     String
+  street          String
+  houseNumber     String
+  postalCode      String
+  city            String
+}
+
+model RepairOrder {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  orderNumber  String   @unique
+
+  client            Client
+  clientOrderNumber String?
+
+
+  orderType    OrderType
+
+  manufacturer    String
+  pumpType        String
+  serialNumber    String
+  motor           String 
+  notes           String
+
+  images          String[]
+
+
+  createdByUserId     String   @db.ObjectId
+  createdByUser       User   @relation(fields: [createdByUserId], references: [id])
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+type InspectionReportPistonPump {
+	formSheet      String
+	notes         String
+}
+
+type OtherPumpSpareParts {
+	shaftSeal          String?
+	otherSeals         String?
+	otherPumpParts     String?
+	ballBearing        String?
+}
+
+type InspectionReportOtherPump {
+	issueWithPumpDescription   String
+	issueWithMotorDescription  String
+
+	repairTimeHours            Int
+	repairTimeMinutes          Int
+
+	damageImages               String[]
+
+	spareParts                 OtherPumpSpareParts?
+	pumpPartsReconditioning    String?
+	engineSpareParts           String?
+	needsSmallSpareParts       Boolean
+	needsSandblasting          Boolean
+	needsPaintingWork          Boolean
+	hasTestBenchCost           Boolean
+}
+
+model InspectionReport {
+  id                  String   @id @default(auto()) @map("_id") @db.ObjectId
+  orderNumber         String   @unique
+
+  pump               Pump
+
+  pistonPumpReport    InspectionReportPistonPump?
+  otherPumpReport     InspectionReportOtherPump?
+
+  images             String[]
+
+  createdByUserId     String   @db.ObjectId
+  createdByUser       User   @relation(fields: [createdByUserId], references: [id])
+
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}

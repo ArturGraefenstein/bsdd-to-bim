@@ -1,0 +1,37 @@
+{
+	"name": "monorepo-template",
+	"version": "1.0.0",
+	"description": "This is a template for a basic monorepo with default configs.",
+	"license": "MIT",
+	"repository": "https://github.com/thekeytechnology/monorepo-template.git",
+	"private": true,
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	],
+	"scripts": {
+		"lint": "eslint .",
+		"relay": "relay-compiler relay.config.js",
+		"start-backend": "bash -c 'source .env.paths && cd apps/backend && \"$JDK_HOME_LMS/bin/java\" -Xms512M -Xmx5g -Xss1M -Duser.timezone=UTC -Dconfig.resource=application.local.conf -Dhttp.port=9000 --illegal-access=deny --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED -Dfile.encoding=UTF-8 -classpath \"$INTELLIJ_PATH/plugins/Scala/launcher/sbt-launch.jar\" xsbt.boot.Boot run'",
+		"generate-schema": "cd apps/backend && sbt \"runMain com.thekey.academy.lms.deployment.ExportSchema ./packages/graphql/schema.graphql\"",
+		"generate:graphqlZodSchema": "graphql-codegen --config ./packages/graphql/codegen.yml",
+		"dev": "concurrently \"yarn start-backend\" \"yarn relay --watch\" \"yarn workspace @package/design-system dev\" \"yarn workspace @package/design-system panda:watch\"",
+		"postinstall": "patch-package && yarn workspace @package/design-system panda"
+	},
+	"devDependencies": {
+		"@graphql-codegen/cli": "5.0.7",
+		"@graphql-codegen/schema-ast": "4.1.0",
+		"@graphql-codegen/typescript": "4.1.6",
+		"@package/config": "workspace:*",
+		"concurrently": "9.2.0",
+		"graphql-codegen-typescript-validation-schema": "0.17.1",
+		"patch-package": "8.0.0",
+		"relay-compiler": "19.0.0"
+	},
+	"packageManager": "yarn@4.6.0",
+	"dependencies": {
+		"eslint": "9.23.0",
+		"zod": "4.0.14",
+		"zod-joda": "2.1.0"
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"name": "@package/graphql",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "commonjs",
+	"files": [
+		"relay-base.config.js",
+		"schema.graphql",
+		"graphql.ts"
+	],
+	"author": "",
+	"exports": {
+		"./types": {
+			"import": "./graphql.ts",
+			"require": "./graphql.ts",
+			"types": "./graphql.ts"
+		}
+	}
+}

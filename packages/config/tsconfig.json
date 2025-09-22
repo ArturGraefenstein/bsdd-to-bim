@@ -1,0 +1,3 @@
+{
+    "extends": "@thekeytechnology/frontend-config/tsconfig.json",
+}

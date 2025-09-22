@@ -1,0 +1,21 @@
+{
+	"name": "@package/shared",
+	"version": "1.0.0",
+	"description": "",
+	"type": "module",
+	"files": [
+		"src/*"
+	],
+	"author": "",
+	"exports": {
+		"./types": {
+			"import": "./src/types.ts",
+			"require": "./src/types.ts",
+			"types": "./src/types.ts"
+		},
+		"./error": {
+			"import": "./src/error/index.js",
+			"types": "./src/error/index.ts"
+		}
+	}
+}

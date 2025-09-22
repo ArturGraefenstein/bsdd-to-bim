@@ -1,0 +1,4 @@
+{
+  "$schema": "https://epic-ui.thekey.technology/registry/latest/schema.json",
+  "outputPath": "./src/components"
+}

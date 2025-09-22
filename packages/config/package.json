@@ -1,0 +1,19 @@
+{
+	"name": "@package/config",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"files": [
+		"tsconfig.json",
+		"eslint.config.js",
+		"prettier.config.js"
+	],
+	"author": "",
+	"dependencies": {
+		"@thekeytechnology/frontend-config": "1.0.27"
+	},
+	"devDependencies": {
+		"typescript-eslint": "8.39.1"
+	}
+}

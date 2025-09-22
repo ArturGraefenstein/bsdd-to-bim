@@ -1,0 +1,46 @@
+{
+  "extends": "@package/config/tsconfig.json",
+  "include": [
+    "**/*",
+    "**/.server/**/*",
+    "**/.client/**/*",
+    ".react-router/types/**/*"
+  ],
+  "compilerOptions": {
+    "types": [
+      "node",
+      "vite/client"
+    ],
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "rootDirs": [
+      ".",
+      "./.react-router/types"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "~/*": [
+        "./app/*"
+      ],
+      "@relay/*": [
+        "./__generated__/*"
+      ],
+      "@styled-system/*": [
+        "../../packages/design-system/styled-system/*"
+      ],
+      "@assets/*": [
+        "./app/assets/*"
+      ],
+      "@features/*": [
+        "./app/features/*"
+      ],
+      "@forms/*": [
+        "./app/forms/*"
+      ],
+      "@package/shared/*": [
+        "../../packages/shared/src/*"
+      ]
+    },
+  }
+}

@@ -1,0 +1,15 @@
+name: reckers-service
+services:
+  mongo:
+    image: mongo:7
+    container_name: mongo
+    command: ["--replSet", "rs0", "--bind_ip_all"]
+    ports: ["27017:27017"]
+    healthcheck:
+      test:
+        ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    volumes:
+      - ./data/mongo:/data/db

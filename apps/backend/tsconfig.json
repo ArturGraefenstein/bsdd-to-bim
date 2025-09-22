@@ -1,0 +1,33 @@
+{
+	"extends": "@package/config/tsconfig.json",
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "NodeNext",
+		"moduleResolution": "nodenext",
+		"outDir": "dist",
+		"paths": {
+			"@modules/*": [
+				"./src/modules/*"
+			],
+			"@resolvers/*": [
+				"./src/resolvers/*"
+			],
+			"@generated/*": [
+				"./src/__generated__/*"
+			],
+			"@context/*": [
+				"./src/context/*"
+			],
+			"@binder/*": [
+				"./src/binder/*"
+			],
+			"@package/shared/*": [
+				"../../packages/shared/src/*"
+			]
+		},
+	},
+	"include": [
+		"src",
+		"codegen.ts"
+	]
+}

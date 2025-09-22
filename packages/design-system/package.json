@@ -1,0 +1,40 @@
+{
+	"name": "@package/design-system",
+	"version": "0.0.1",
+	"private": true,
+	"types": "./dist/index.d.ts",
+	"main": "./dist/index.js",
+	"exports": {
+		".": {
+			"source": "./src/index.ts",
+			"types": "./dist/index.d.ts",
+			"import": {
+				"types": "./dist/index.d.mts",
+				"default": "./dist/index.mjs"
+			},
+			"require": "./dist/index.js"
+		},
+		"./styled-system/styles.css": "./styled-system/styles.css"
+	},
+	"scripts": {
+		"prepare": "yarn panda",
+		"build": "tsup",
+		"build-fast": "tsup --no-dts",
+		"panda:watch": "yarn panda --watch",
+		"dev": "yarn tsup --watch"
+	},
+	"devDependencies": {
+		"@package/config": "workspace:*",
+		"@pandacss/dev": "1.0.1",
+		"@pandacss/studio": "1.0.1",
+		"@thekeytechnology/epic-ui-panda-preset": "2.0.13",
+		"@types/react": "19.1.9",
+		"@types/react-dom": "19.1.7",
+		"react": "19.1.1",
+		"react-dom": "19.1.1",
+		"tsup": "8.5.0"
+	},
+	"dependencies": {
+		"@thekeytechnology/epic-ui": "2.0.42"
+	}
+}

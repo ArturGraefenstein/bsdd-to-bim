@@ -1,0 +1,39 @@
+schema: "packages/graphql/schema.graphql"
+generates:
+  "packages/graphql/graphql.ts":
+    plugins:
+      - add:
+          content: "// @ts-nocheck\nimport {zj} from 'zod-joda/mini';"
+      - typescript
+      - typescript-validation-schema
+    config:
+      enumsAsConst: true
+      validationSchemaExportType: "const"
+      schema: zod
+      notAllowEmptyString: true
+      scalars:
+        ZonedDateTime: string
+        LocalDate: string
+        BigDecimal: Date
+      scalarSchemas:
+        Date: z.date()
+        Email: z.string().email()
+        BigDecimal: z.number()
+        ZonedDateTIme: zj.zonedDateTime()
+      directives:
+        # Write directives like
+        #
+        # directive:
+        #   arg1: schemaApi
+        #   arg2: ["schemaApi2", "Hello $1"]
+        #
+        # See more examples in `./tests/directive.spec.ts`
+        # https://github.com/Code-Hex/graphql-codegen-typescript-validation-schema/blob/main/tests/directive.spec.ts
+        constraint:
+          minLength: min
+          # Replace $1 with specified `startsWith` argument value of the constraint directive
+          startsWith: [regex, /^$1/, message]
+          format:
+            # This example means `validation-schema: directive-arg`
+            # directive-arg is supported String and Enum.
+            email: email
