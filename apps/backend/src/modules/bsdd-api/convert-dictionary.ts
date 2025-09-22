@@ -1,7 +1,7 @@
 import { type MutationResolvers } from "@generated/resolvers-types.js";
 import type { Context } from "@context/context.js";
 import { createModule } from "@binder/create-module.js";
-import { isAuthenticated } from "@modules/auth/permissions.js";
+import { allow, isAuthenticated } from "@modules/auth/permissions.js";
 import { getApi } from "./api.js";
 
 const convertDictionaryResolver: MutationResolvers<Context>["convertDictionary"] =
@@ -45,7 +45,7 @@ const convertDictionaryResolver: MutationResolvers<Context>["convertDictionary"]
 		return { converted: true };
 	};
 
-const convertDictionaryPermissions = isAuthenticated;
+const convertDictionaryPermissions = allow;
 
 export const convertDictionaryModule = createModule({
 	resolver: convertDictionaryResolver,

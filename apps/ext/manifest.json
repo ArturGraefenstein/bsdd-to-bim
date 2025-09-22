@@ -1,23 +1,22 @@
 {
   "manifest_version": 3,
-  "name": "My First Extension",
+  "name": "BIM Import for BSDD",
   "version": "1.0",
-  "description": "A test Chrome extension",
-  "permissions": ["activeTab", "scripting"],
-  "action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "128": "icons/icon128.png"
-    }
-  },
-  "background": {
-    "service_worker": "background.js"
-  },
+  "description": "Adds an 'Import to BIM' button to BuildingSmart bSDD dictionary pages",
+  "permissions": ["activeTab", "storage"],
+  "host_permissions": ["https://search.bsdd.buildingsmart.org/*"],
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
+      "matches": ["https://search.bsdd.buildingsmart.org/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
     }
-  ]
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "BIM Import Settings"
+  },
+  "icons": {
+    "128": "icons/icon128.png"
+  }
 }
-

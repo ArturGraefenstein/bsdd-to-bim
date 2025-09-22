@@ -1,11 +1,119 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Popup</title>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 300px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-size: 18px;
+      margin: 0 0 8px 0;
+      color: #1f2937;
+    }
+
+    .header p {
+      font-size: 14px;
+      color: #6b7280;
+      margin: 0;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: #374151;
+      margin-bottom: 4px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .save-button {
+      width: 100%;
+      padding: 10px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .save-button:hover {
+      background: #1d4ed8;
+    }
+
+    .status {
+      margin-top: 12px;
+      padding: 8px;
+      border-radius: 4px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .status.success {
+      background: #d1fae5;
+      color: #065f46;
+    }
+  </style>
 </head>
 <body>
-  <button id="changeColor">Change Background</button>
-  <script src="popup.js"></script>
+<div class="header">
+  <h1>BIM Import Settings</h1>
+  <p>Configure your BIM import endpoint</p>
+</div>
+
+<form id="settingsForm">
+  <div class="form-group">
+    <label for="endpoint">BIM API Endpoint</label>
+    <input
+            type="url"
+            id="endpoint"
+            placeholder="https://api.yourbimapp.com/import"
+            required
+    >
+  </div>
+
+  <div class="form-group">
+    <label for="apiKey">API Key (Optional)</label>
+    <input
+            type="password"
+            id="apiKey"
+            placeholder="Your API key"
+    >
+  </div>
+
+  <button type="submit" class="save-button">Save Settings</button>
+</form>
+
+<div id="status" class="status" style="display: none;"></div>
+
+<script src="popup.js"></script>
 </body>
 </html>
-
