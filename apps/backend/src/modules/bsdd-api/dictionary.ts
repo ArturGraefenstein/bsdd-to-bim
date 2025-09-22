@@ -3,7 +3,7 @@ import { fetchFromBSDD } from "./fetcher.js";
 const DICTIONARY_API_PATH = "/Dictionary/v1";
 
 export type FetchDictionaryParams = {
-	Uri: string;
+	uri: string;
 };
 
 export const fetchDictionary = async (

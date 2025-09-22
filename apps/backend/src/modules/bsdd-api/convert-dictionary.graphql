@@ -1,0 +1,26 @@
+type ConvertDictionaryPayload {
+	converted: Boolean!
+}
+
+# ============================
+# INPUTS
+# ============================
+input ConvertDictionaryInput {
+	uri: String!
+}
+
+# ============================
+# ENUMS
+# ============================
+
+# ============================
+# QUERIES
+# ============================
+
+# ============================
+# MUTATIONS
+# ============================
+
+extend type Mutation {
+	convertDictionary(input: ConvertDictionaryInput!): ConvertDictionaryPayload!
+}
