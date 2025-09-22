@@ -1,8 +1,8 @@
-type Real = unknown;
-type PropertyRelation = unknown;
-type AllowedValue = unknown;
-export type BSDDClassAbstraction = {}
-export type BSSDPropertyAbstraction = {
+import type {BSDDReal} from "./bsdd-real.types.js";
+import type {BSDDPropertyRelation} from "./bsdd-property-relation.types.js";
+import type {BSDDAllowedValue} from "./bsdd-allowed-value.types.js";
+
+export type BSSDProperty = {
     Code: string;
     Name: string;
     Definition?: string;
@@ -31,10 +31,10 @@ export type BSSDPropertyAbstraction = {
     DynamicParameterPropertyCodes?: string[];
     IsDynamic?: boolean;
 
-    MaxExclusive?: Real;
-    MaxInclusive?: Real;
-    MinExclusive?: Real;
-    MinInclusive?: Real;
+    MaxExclusive?: BSDDReal;
+    MaxInclusive?: BSDDReal;
+    MinExclusive?: BSDDReal;
+    MinInclusive?: BSDDReal;
 
     MethodOfMeasurement?: string;
     OwnedUri?: string;
@@ -52,11 +52,7 @@ export type BSSDPropertyAbstraction = {
     VersionDateUtc?: Date;
     VersionNumber?: string;
     VisualRepresentationUri?: string;
-    PropertyRelations?: PropertyRelation[]
-    AllowedValues?: AllowedValue[];
+    PropertyRelations?: BSDDPropertyRelation[]
+    AllowedValues?: BSDDAllowedValue[];
 
-}
-export type BSSDJsonAbstraction = {
-    Classes: BSDDClassAbstraction[],
-    Properties: BSSDPropertyAbstraction[],
 }
