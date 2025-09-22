@@ -143,7 +143,7 @@ async function handleBimImport(button) {
 				"sec-fetch-site": "same-origin",
 			},
 			referrer: `http://localhost:4000/graphql?query=mutation+MyMutation+%7B%0A++convertDictionary%28%0A++++input%3A+%7Buri%3A+%22${encodeURIComponent(uri)}%22%7D%0A++%29+%7B%0A++++converted%0A++%7D%0A%7D`,
-			body: `{"query":"mutation MyMutation{convertDictionary(input:{uri:${uri}}){converted}}","operationName":"MyMutation"}`,
+			body: `{"query":"mutation MyMutation{convertDictionary(input:{uri:\\\"${uri}\\\"}){blob}}","operationName":"MyMutation"}`,
 			method: "POST",
 			mode: "cors",
 			credentials: "include",
@@ -154,6 +154,7 @@ async function handleBimImport(button) {
 		}
 
 		const responseData = await response.json();
+		downloadXml(responseData.data.convertDictionary.blob, `${uri}.xml`);
 
 		// Show success state
 		button.classList.remove("loading");
@@ -272,3 +273,20 @@ if (document.readyState === "loading") {
 }
 
 // Also try to inject after a short delay in case of dynamic content
+
+// Suppose 'data.blob' is the base64 string from your GraphQL mutation
+function downloadXml(base64, filename) {
+	const binary = atob(base64); // decode base64
+	const array = Uint8Array.from(binary, (char) => char.charCodeAt(0));
+	const blob = new Blob([array], { type: "application/xml" });
+
+	// Create a temporary link to download
+	const url = URL.createObjectURL(blob);
+	const a = document.createElement("a");
+	a.href = url;
+	a.download = filename;
+	document.body.appendChild(a);
+	a.click();
+	document.body.removeChild(a);
+	URL.revokeObjectURL(url);
+}

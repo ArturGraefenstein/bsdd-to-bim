@@ -20,36 +20,9 @@ const convertDictionaryResolver: MutationResolvers<Context>["convertDictionary"]
 		await fs.writeFileSync("./bim.xml", xml);
 		console.log("DICT", xml);
 
-		// for (const property of properties.data.properties || []) {
-		// 	const propertyUri = property.uri;
-		// 	if (!propertyUri) continue;
+		const base64 = Buffer.from(xml, "utf-8").toString("base64");
 
-		// 	const propertyObj = await api.propertyGet({ uri: propertyUri });
-		// 	console.log("PROPERTY", propertyObj.data);
-		// }
-
-		// const classes = await api.dictionaryClassesGetWithClasses({ Uri: uri });
-		// console.log("CLASSES", classes.data);
-
-		// for (const cls of classes.data.classes || []) {
-		// 	const classUri = cls.uri;
-		// 	if (!classUri) continue;
-
-		// 	const classObj = await api.classGet({ Uri: classUri });
-		// 	const classProperties = await api.classPropertiesGet({
-		// 		ClassUri: classUri,
-		// 	});
-		// 	const classRelations = await api.classRelationsGet({
-		// 		ClassUri: classUri,
-		// 		GetReverseRelations: true,
-		// 	});
-
-		// 	console.log("CLASS", classObj.data);
-		// 	console.log("CLASS", classProperties.data);
-		// 	console.log("CLASS", classRelations.data);
-		// }
-
-		return { converted: true };
+		return { converted: true, blob: base64 };
 	};
 
 const convertDictionaryPermissions = allow;

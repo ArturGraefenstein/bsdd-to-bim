@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Container>
+  <property>
+    <guid>2f20bd5f-c79d-54dd-b28a-6c72291d9ec1</guid>
+    <status>active</status>
+    <visibility>child</visibility>
+    <organisation name="BSDD Import">445a9244-4107-493b-8afc-6b0215b2a602</organisation>
+    <dateOfCreation>2025-09-23T01:01:48+02:00</dateOfCreation>
+    <dateOfActivation>2025-09-23T01:01:48+02:00</dateOfActivation>
+    <dateOfRevision>2025-09-23T01:01:48+02:00</dateOfRevision>
+    <dateOfVersion>2025-09-23T01:01:48+02:00</dateOfVersion>
+    <versionNumber>1</versionNumber>
+    <revisionNumber>1</revisionNumber>
+    <creatorsLanguage name="English (US)" country="United States">en-US</creatorsLanguage>
+    <namesInLanguage>
+      <name>Color</name>
+      <language name="English (US)" country="United States">en-US</language>
+    </namesInLanguage>
+    <definitionsInLanguage>
+      <definition>Color</definition>
+      <language name="English (US)" country="United States">en-US</language>
+    </definitionsInLanguage>
+    <descriptionsInLanguage>
+      <description>The property possessed by an object of producing different sensations on the eye as a result of the w</description>
+      <language name="English (US)" country="United States">en-US</language>
+    </descriptionsInLanguage>
+    <groupOfProperties name="Wand" versionNumber="3" revisionNumber="1">935a6e8d-af3b-4211-86b1-0ca4c08afdc1</groupOfProperties>
+    <countryOfUse name="United States">US</countryOfUse>
+    <countryOfOrigin name="United States">US</countryOfOrigin>
+    <physicalQuantity>
+      <siUnit>ohne</siUnit>
+      <language name="English (US)" country="United States">en-US</language>
+    </physicalQuantity>
+    <dimension>without</dimension>
+    <dataType>Aufzählung</dataType>
+    <dynamicProperty>no</dynamicProperty>
+    <units>unitless</units>
+    <listOfPossibleValuesInLanguage>
+      <possibleValue>Laubholz</possibleValue>
+      <language name="English (US)" country="United States">en-US</language>
+    </listOfPossibleValuesInLanguage>
+  </property>
+  <property>
+    <guid>3d40828d-fb12-5004-bd96-dc0bde33929f</guid>
+    <status>active</status>
+    <visibility>child</visibility>
+    <organisation name="BSDD Import">445a9244-4107-493b-8afc-6b0215b2a602</organisation>
+    <dateOfCreation>2025-09-23T01:01:48+02:00</dateOfCreation>
+    <dateOfActivation>2025-09-23T01:01:48+02:00</dateOfActivation>
+    <dateOfRevision>2025-09-23T01:01:48+02:00</dateOfRevision>
+    <dateOfVersion>2025-09-23T01:01:48+02:00</dateOfVersion>
+    <versionNumber>1</versionNumber>
+    <revisionNumber>1</revisionNumber>
+    <creatorsLanguage name="English (US)" country="United States">en-US</creatorsLanguage>
+    <namesInLanguage>
+      <name>Country of origin</name>
+      <language name="English (US)" country="United States">en-US</language>
+    </namesInLanguage>
+    <definitionsInLanguage>
+      <definition>Country of origin</definition>
+      <language name="English (US)" country="United States">en-US</language>
+    </definitionsInLanguage>
+    <descriptionsInLanguage>
+      <description>Production location</description>
+      <language name="English (US)" country="United States">en-US</language>
+    </descriptionsInLanguage>
+    <groupOfProperties name="Wand" versionNumber="3" revisionNumber="1">935a6e8d-af3b-4211-86b1-0ca4c08afdc1</groupOfProperties>
+    <countryOfUse name="United States">US</countryOfUse>
+    <countryOfOrigin name="United States">US</countryOfOrigin>
+    <physicalQuantity>
+      <siUnit>ohne</siUnit>
+      <language name="English (US)" country="United States">en-US</language>
+    </physicalQuantity>
+    <dimension>without</dimension>
+    <dataType>Aufzählung</dataType>
+    <dynamicProperty>no</dynamicProperty>
+    <units>unitless</units>
+    <listOfPossibleValuesInLanguage>
+      <possibleValue>Laubholz</possibleValue>
+      <language name="English (US)" country="United States">en-US</language>
+    </listOfPossibleValuesInLanguage>
+  </property>
+  <property>
+    <guid>c6962a3b-2ef8-5a68-a72d-0940f6835ffe</guid>
+    <status>active</status>
+    <visibility>child</visibility>
+    <organisation name="BSDD Import">445a9244-4107-493b-8afc-6b0215b2a602</organisation>
+    <dateOfCreation>2025-09-23T01:01:48+02:00</dateOfCreation>
+    <dateOfActivation>2025-09-23T01:01:48+02:00</dateOfActivation>
+    <dateOfRevision>2025-09-23T01:01:48+02:00</dateOfRevision>
+    <dateOfVersion>2025-09-23T01:01:48+02:00</dateOfVersion>
+    <versionNumber>1</versionNumber>
+    <revisionNumber>1</revisionNumber>
+    <creatorsLanguage name="English (US)" country="United States">en-US</creatorsLanguage>
+    <namesInLanguage>
+      <name>Height</name>
+      <language name="English (US)" country="United States">en-US</language>
+    </namesInLanguage>
+    <definitionsInLanguage>
+      <definition>Height</definition>
+      <language name="English (US)" country="United States">en-US</language>
+    </definitionsInLanguage>
+    <descriptionsInLanguage>
+      <description>Distance from bottom to top of something standing upright</description>
+      <language name="English (US)" country="United States">en-US</language>
+    </descriptionsInLanguage>
+    <groupOfProperties name="Wand" versionNumber="3" revisionNumber="1">935a6e8d-af3b-4211-86b1-0ca4c08afdc1</groupOfProperties>
+    <countryOfUse name="United States">US</countryOfUse>
+    <countryOfOrigin name="United States">US</countryOfOrigin>
+    <physicalQuantity>
+      <siUnit>ohne</siUnit>
+      <language name="English (US)" country="United States">en-US</language>
+    </physicalQuantity>
+    <dimension>without</dimension>
+    <dataType>Aufzählung</dataType>
+    <dynamicProperty>no</dynamicProperty>
+    <units>unitless</units>
+    <listOfPossibleValuesInLanguage>
+      <possibleValue>Laubholz</possibleValue>
+      <language name="English (US)" country="United States">en-US</language>
+    </listOfPossibleValuesInLanguage>
+  </property>
+  <property>
+    <guid>7dae99ab-8443-5666-a8b4-24636d97476a</guid>
+    <status>active</status>
+    <visibility>child</visibility>
+    <organisation name="BSDD Import">445a9244-4107-493b-8afc-6b0215b2a602</organisation>
+    <dateOfCreation>2025-09-23T01:01:48+02:00</dateOfCreation>
+    <dateOfActivation>2025-09-23T01:01:48+02:00</dateOfActivation>
+    <dateOfRevision>2025-09-23T01:01:48+02:00</dateOfRevision>
+    <dateOfVersion>2025-09-23T01:01:48+02:00</dateOfVersion>
+    <versionNumber>1</versionNumber>
+    <revisionNumber>1</revisionNumber>
+    <creatorsLanguage name="English (US)" country="United States">en-US</creatorsLanguage>
+    <namesInLanguage>
+      <name>Volume</name>
+      <language name="English (US)" country="United States">en-US</language>
+    </namesInLanguage>
+    <definitionsInLanguage>
+      <definition>Volume</definition>
+      <language name="English (US)" country="United States">en-US</language>
+    </definitionsInLanguage>
+    <descriptionsInLanguage>
+      <description>Volume is a scalar quantity expressing the amount of three-dimensional space enclosed by a closed sur</description>
+      <language name="English (US)" country="United States">en-US</language>
+    </descriptionsInLanguage>
+    <groupOfProperties name="Wand" versionNumber="3" revisionNumber="1">935a6e8d-af3b-4211-86b1-0ca4c08afdc1</groupOfProperties>
+    <countryOfUse name="United States">US</countryOfUse>
+    <countryOfOrigin name="United States">US</countryOfOrigin>
+    <physicalQuantity>
+      <siUnit>ohne</siUnit>
+      <language name="English (US)" country="United States">en-US</language>
+    </physicalQuantity>
+    <dimension>without</dimension>
+    <dataType>Aufzählung</dataType>
+    <dynamicProperty>no</dynamicProperty>
+    <units>unitless</units>
+    <listOfPossibleValuesInLanguage>
+      <possibleValue>Laubholz</possibleValue>
+      <language name="English (US)" country="United States">en-US</language>
+    </listOfPossibleValuesInLanguage>
+  </property>
+</Container>

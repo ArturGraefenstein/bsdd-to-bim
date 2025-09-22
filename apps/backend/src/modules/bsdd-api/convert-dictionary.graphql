@@ -1,5 +1,6 @@
 type ConvertDictionaryPayload {
 	converted: Boolean!
+	blob: String!
 }
 
 # ============================
