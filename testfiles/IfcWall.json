@@ -1,0 +1,123 @@
+{
+    "classType": "Class",
+    "referenceCode": "IfcWall",
+    "parentClassReference": {
+        "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcBuiltElement",
+        "name": "Built Element",
+        "code": "IfcBuiltElement"
+    },
+    "childClassReferences": [
+        {
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWallELEMENTEDWALL",
+            "name": "Elemented Wall",
+            "code": "IfcWallELEMENTEDWALL"
+        },
+        {
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWallMOVABLE",
+            "name": "Movable",
+            "code": "IfcWallMOVABLE"
+        },
+        {
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWallPARAPET",
+            "name": "Parapet",
+            "code": "IfcWallPARAPET"
+        },
+        {
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWallPARTITIONING",
+            "name": "Partitioning",
+            "code": "IfcWallPARTITIONING"
+        },
+        {
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWallPLUMBINGWALL",
+            "name": "Plumbing Wall",
+            "code": "IfcWallPLUMBINGWALL"
+        },
+        {
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWallPOLYGONAL",
+            "name": "Polygonal",
+            "code": "IfcWallPOLYGONAL"
+        },
+        {
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWallRETAININGWALL",
+            "name": "Retaining Wall",
+            "code": "IfcWallRETAININGWALL"
+        },
+        {
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWallSHEAR",
+            "name": "Shear",
+            "code": "IfcWallSHEAR"
+        },
+        {
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWallSOLIDWALL",
+            "name": "Solid Wall",
+            "code": "IfcWallSOLIDWALL"
+        },
+        {
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWallSTANDARD",
+            "name": "Standard",
+            "code": "IfcWallSTANDARD"
+        },
+        {
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWallWAVEWALL",
+            "name": "Wave Wall",
+            "code": "IfcWallWAVEWALL"
+        }
+    ],
+    "hierarchy": [
+        {
+            "level": 1,
+            "name": "Root",
+            "code": "IfcRoot",
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcRoot"
+        },
+        {
+            "level": 2,
+            "name": "Object Definition",
+            "code": "IfcObjectDefinition",
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcObjectDefinition"
+        },
+        {
+            "level": 3,
+            "name": "Object",
+            "code": "IfcObject",
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcObject"
+        },
+        {
+            "level": 4,
+            "name": "Product",
+            "code": "IfcProduct",
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcProduct"
+        },
+        {
+            "level": 5,
+            "name": "Element",
+            "code": "IfcElement",
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcElement"
+        },
+        {
+            "level": 6,
+            "name": "Built Element",
+            "code": "IfcBuiltElement",
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcBuiltElement"
+        },
+        {
+            "level": 7,
+            "name": "Wall",
+            "code": "IfcWall",
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWall"
+        }
+    ],
+    "dictionaryUri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3",
+    "activationDateUtc": "2024-01-12T00:00:00Z",
+    "code": "IfcWall",
+    "countriesOfUse": [],
+    "definition": "Vertikale Konstruktion zur Abgrenzung oder Unterteilung von Räumen. In der Regel handelt es sich um senkrechte oder nahezu senkrechte Flächenelemente, die häufig zur Aufnahme von Bauwerkslasten dienen. Sie müssen jedoch nicht tragend sein. \r\nAnmerkung: Nach ISO 6707-1 ist eine vertikale Konstruktion in der Regel aus Mauerwerk oder Beton, die ein Bauwerk begrenzt oder unterteilt und eine tragende oder stützende Funktion erfüllt.",
+    "name": "Wand",
+    "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWall",
+    "replacedObjectCodes": [],
+    "replacingObjectCodes": [],
+    "status": "Active",
+    "subdivisionsOfUse": [],
+    "uid": "6cb09e6f-b387-44bc-afcc-563e5b5b5ead",
+    "versionDateUtc": "2024-01-12T00:00:00Z"
+}

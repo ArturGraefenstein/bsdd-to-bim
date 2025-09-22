@@ -63,7 +63,7 @@ const signUserToken = async (
 			type,
 			target: AppTokenTarget.USER,
 		},
-		type === AppTokenType.REFRESH_TOKEN ? "7d" : "10m",
+		type === AppTokenType.REFRESH_TOKEN ? "30d" : "7d",
 	);
 
 export function verifyUserToken<T extends UserTokenPayload>(

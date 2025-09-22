@@ -54,7 +54,7 @@ export const LoginScreen = () => {
 		<AuthLayout>
 			<VStack flex="1" gap="16" alignItems="initial">
 				<Box>
-					<Text8>Service App Admin</Text8>
+					<Text8>BSDD to BIM</Text8>
 				</Box>
 				<LoginForm onSubmit={handleSubmit} />
 			</VStack>

@@ -1,0 +1,78 @@
+{
+    "classType": "Class",
+    "referenceCode": "IfcAlarmBELL",
+    "parentClassReference": {
+        "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcAlarm",
+        "name": "Alarm",
+        "code": "IfcAlarm"
+    },
+    "hierarchy": [
+        {
+            "level": 1,
+            "name": "Root",
+            "code": "IfcRoot",
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcRoot"
+        },
+        {
+            "level": 2,
+            "name": "Object Definition",
+            "code": "IfcObjectDefinition",
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcObjectDefinition"
+        },
+        {
+            "level": 3,
+            "name": "Object",
+            "code": "IfcObject",
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcObject"
+        },
+        {
+            "level": 4,
+            "name": "Product",
+            "code": "IfcProduct",
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcProduct"
+        },
+        {
+            "level": 5,
+            "name": "Element",
+            "code": "IfcElement",
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcElement"
+        },
+        {
+            "level": 6,
+            "name": "Distribution Element",
+            "code": "IfcDistributionElement",
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcDistributionElement"
+        },
+        {
+            "level": 7,
+            "name": "Distribution Control Element",
+            "code": "IfcDistributionControlElement",
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcDistributionControlElement"
+        },
+        {
+            "level": 8,
+            "name": "Alarm",
+            "code": "IfcAlarm",
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcAlarm"
+        },
+        {
+            "level": 9,
+            "name": "Bell",
+            "code": "IfcAlarmBELL",
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcAlarmBELL"
+        }
+    ],
+    "dictionaryUri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3",
+    "activationDateUtc": "2024-01-12T00:00:00Z",
+    "code": "IfcAlarmBELL",
+    "countriesOfUse": [],
+    "definition": "An audible alarm.",
+    "description": "Technical note: Because this class is a 'Predefined Type' in IFC, meaning a specialisation of its parent class, in IFC it should be represented by the parent class.",
+    "name": "Bell",
+    "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcAlarmBELL",
+    "replacedObjectCodes": [],
+    "replacingObjectCodes": [],
+    "status": "Active",
+    "subdivisionsOfUse": [],
+    "versionDateUtc": "2024-01-12T00:00:00Z"
+}

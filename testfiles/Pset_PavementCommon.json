@@ -1,0 +1,24 @@
+{
+    "classType": "GroupOfProperties",
+    "referenceCode": "Pset_PavementCommon",
+    "hierarchy": [
+        {
+            "level": 1,
+            "name": "Property Set: Pavement Common",
+            "code": "Pset_PavementCommon",
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/Pset_PavementCommon"
+        }
+    ],
+    "dictionaryUri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3",
+    "activationDateUtc": "2024-01-12T00:00:00Z",
+    "code": "Pset_PavementCommon",
+    "countriesOfUse": [],
+    "definition": "Describes the common properties and nominal dimensions of pavement.",
+    "name": "Property Set: Pavement Common",
+    "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/Pset_PavementCommon",
+    "replacedObjectCodes": [],
+    "replacingObjectCodes": [],
+    "status": "Active",
+    "subdivisionsOfUse": [],
+    "versionDateUtc": "2024-01-12T00:00:00Z"
+}

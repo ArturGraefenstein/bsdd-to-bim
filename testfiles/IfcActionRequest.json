@@ -1,0 +1,81 @@
+{
+    "classType": "Class",
+    "referenceCode": "IfcActionRequest",
+    "parentClassReference": {
+        "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcControl",
+        "name": "Control",
+        "code": "IfcControl"
+    },
+    "childClassReferences": [
+        {
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcActionRequestEMAIL",
+            "name": "Email",
+            "code": "IfcActionRequestEMAIL"
+        },
+        {
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcActionRequestFAX",
+            "name": "Fax",
+            "code": "IfcActionRequestFAX"
+        },
+        {
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcActionRequestPHONE",
+            "name": "Phone",
+            "code": "IfcActionRequestPHONE"
+        },
+        {
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcActionRequestPOST",
+            "name": "Post",
+            "code": "IfcActionRequestPOST"
+        },
+        {
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcActionRequestVERBAL",
+            "name": "Verbal",
+            "code": "IfcActionRequestVERBAL"
+        }
+    ],
+    "hierarchy": [
+        {
+            "level": 1,
+            "name": "Root",
+            "code": "IfcRoot",
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcRoot"
+        },
+        {
+            "level": 2,
+            "name": "Object Definition",
+            "code": "IfcObjectDefinition",
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcObjectDefinition"
+        },
+        {
+            "level": 3,
+            "name": "Object",
+            "code": "IfcObject",
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcObject"
+        },
+        {
+            "level": 4,
+            "name": "Control",
+            "code": "IfcControl",
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcControl"
+        },
+        {
+            "level": 5,
+            "name": "Action Request",
+            "code": "IfcActionRequest",
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcActionRequest"
+        }
+    ],
+    "dictionaryUri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3",
+    "activationDateUtc": "2024-01-12T00:00:00Z",
+    "code": "IfcActionRequest",
+    "countriesOfUse": [],
+    "definition": "A request is the act or instance of asking for something, such as a request for information, bid submission, or performance of work.",
+    "name": "Action Request",
+    "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcActionRequest",
+    "replacedObjectCodes": [],
+    "replacingObjectCodes": [],
+    "status": "Active",
+    "subdivisionsOfUse": [],
+    "uid": "7045cc64-c05a-4a43-aaa5-b5b4d849f3f5",
+    "versionDateUtc": "2024-01-12T00:00:00Z"
+}

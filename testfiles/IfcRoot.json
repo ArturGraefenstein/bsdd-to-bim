@@ -1,0 +1,32 @@
+{
+    "classType": "Class",
+    "referenceCode": "IfcRoot",
+    "childClassReferences": [
+        {
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcObjectDefinition",
+            "name": "Object Definition",
+            "code": "IfcObjectDefinition"
+        }
+    ],
+    "hierarchy": [
+        {
+            "level": 1,
+            "name": "Root",
+            "code": "IfcRoot",
+            "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcRoot"
+        }
+    ],
+    "dictionaryUri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3",
+    "activationDateUtc": "2024-01-12T00:00:00Z",
+    "code": "IfcRoot",
+    "countriesOfUse": [],
+    "definition": "[[IfcRoot]] is the most abstract and root class for all entity definitions that roots in the kernel or in subsequent layers of the IFC specification. It is therefore the common supertype of all IFC entities, beside those defined in an IFC resource schema. All entities that are subtypes of [[IfcRoot]] can be used independently, whereas resource schema entities, that are not subtypes of [[IfcRoot]], are not supposed to be independent entities.",
+    "name": "Root",
+    "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcRoot",
+    "replacedObjectCodes": [],
+    "replacingObjectCodes": [],
+    "status": "Active",
+    "subdivisionsOfUse": [],
+    "uid": "f8efd3b8-d3ea-429a-95d6-d19264324999",
+    "versionDateUtc": "2024-01-12T00:00:00Z"
+}

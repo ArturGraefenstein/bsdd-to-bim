@@ -1,0 +1,20 @@
+{
+    "connectedPropertyCodes": [],
+    "dataType": "Real",
+    "propertyValueKind": "Single",
+    "units": [],
+    "qudtCodes": [],
+    "dictionaryUri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3",
+    "activationDateUtc": "2024-01-12T00:00:00Z",
+    "code": "MaximumAtmosphericPressure",
+    "countriesOfUse": [],
+    "definition": "Maximum level of atmospheric pressure that the equipment can operate effectively in.",
+    "description": "Technical note: in IFC this property takes 'IfcPressureMeasure' as value. Such objects are not included in bSDD for simplicity reason. IFC also doesn't enforce particular units, but recommends using metric SI units (metre, kilogram, etc.). Read the IFC documentation for more information.",
+    "name": "Maximum Atmospheric Pressure",
+    "uri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/prop/MaximumAtmosphericPressure",
+    "replacedObjectCodes": [],
+    "replacingObjectCodes": [],
+    "status": "Active",
+    "subdivisionsOfUse": [],
+    "versionDateUtc": "2024-01-12T00:00:00Z"
+}
