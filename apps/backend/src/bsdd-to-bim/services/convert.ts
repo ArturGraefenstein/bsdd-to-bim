@@ -3,7 +3,7 @@ import { xmlBuilder } from "../utils/xml-builder.utils.js";
 import { getGuidFromProperty } from "../property/utils/create-guid-from-property.utils.js";
 import { PropertyStatus } from "../property/types/property-status.types.js";
 
-import moment, { lang } from "moment-timezone";
+import moment from "moment-timezone";
 import { PropertyQuantity } from "../property/types/quantity.types.js";
 import { PropertyDimension } from "../property/types/property-dimension.types.js";
 import { PropertyDataType } from "../property/types/property-data-type.types.js";
@@ -17,21 +17,13 @@ export const convert = async (
 	const countryResponse = await getApi().countryGet();
 	const localResponse = await getApi().languageGet();
 
+	const locale = propertiesOnDictionary.defaultLanguageCode ?? "de-DE";
+	const countryCode = locale.split("-").slice().reverse().shift() ?? "";
 	const countryName =
-		countryResponse.data.find(
-			(e) => e.code === propertiesOnDictionary.defaultLanguageCode,
-		)?.name ?? "Deutschland";
+		countryResponse.data.find((e) => e.code === countryCode)?.name ?? "US";
 
-	const language =
-		"Deutsch" ??
-		localResponse.data.find(
-			(e) => e.isoCode === propertiesOnDictionary.defaultLanguageCode,
-		)?.name;
+	const language = localResponse.data.find((e) => e.isoCode === locale)?.name;
 
-	console.log(countryName, language);
-
-	const locale = "de-DE"; // propertiesOnDictionary.defaultLanguageCode
-	const countryCode = "DE";
 	const myInput = propertiesOnDictionary?.properties?.map((bsddProperty) => {
 		return {
 			"?xml": {
