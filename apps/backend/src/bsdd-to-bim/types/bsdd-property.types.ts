@@ -2,7 +2,7 @@ import type {BSDDReal} from "./bsdd-real.types.js";
 import type {BSDDPropertyRelation} from "./bsdd-property-relation.types.js";
 import type {BSDDAllowedValue} from "./bsdd-allowed-value.types.js";
 
-export type BSSDProperty = {
+export type BSDDProperty = {
     Code: string;
     Name: string;
     Definition?: string;
