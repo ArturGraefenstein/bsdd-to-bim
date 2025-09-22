@@ -16,7 +16,8 @@
 		"generate-schema": "cd apps/backend && sbt \"runMain com.thekey.academy.lms.deployment.ExportSchema ./packages/graphql/schema.graphql\"",
 		"generate:graphqlZodSchema": "graphql-codegen --config ./packages/graphql/codegen.yml",
 		"dev": "concurrently \"yarn start-backend\" \"yarn relay --watch\" \"yarn workspace @package/design-system dev\" \"yarn workspace @package/design-system panda:watch\"",
-		"postinstall": "patch-package && yarn workspace @package/design-system panda"
+		"postinstall": "patch-package && yarn workspace @package/design-system panda",
+		"bsdd-pull-schema": "npx swagger-typescript-api generate -p ./swagger.json -o ./apps/backend/src/bsdd-to-bim/types -n swagger.types.ts"
 	},
 	"devDependencies": {
 		"@graphql-codegen/cli": "5.0.7",
@@ -32,6 +33,7 @@
 	"dependencies": {
 		"eslint": "9.23.0",
 		"fast-xml-parser": "4.0.15",
+		"vitest": "3.2.4",
 		"zod": "4.0.14",
 		"zod-joda": "2.1.0"
 	}
