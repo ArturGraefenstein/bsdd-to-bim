@@ -1,8 +1,5 @@
 import { xmlBuilder } from "../utils/xml-builder.utils.js";
-import type {
-	DictionaryPropertiesResponseContractV1,
-	PropertyListItemContractV1,
-} from "../types/swagger.types.js";
+
 import { getGuidFromProperty } from "../property/utils/create-guid-from-property.utils.js";
 import { PropertyStatus } from "../property/types/property-status.types.js";
 
@@ -12,6 +9,7 @@ import { PropertyQuantity } from "../property/types/quantity.types.js";
 import { PropertyDimension } from "../property/types/property-dimension.types.js";
 import { PropertyDataType } from "../property/types/property-data-type.types.js";
 import { PropertyUnit } from "../property/types/property-units.types.js";
+import type { DictionaryPropertiesResponseContractV1 } from "@modules/bsdd-api/swagger.types.js";
 
 export const convert = (
 	propertiesOnDictionary: DictionaryPropertiesResponseContractV1,
@@ -23,7 +21,7 @@ export const convert = (
 	const myInput = propertiesOnDictionary?.properties?.map((bsddProperty) => {
 		return {
 			"?xml": {
-				$version: 1.0,
+				$version: "1.0",
 				$encoding: "UTF-8",
 				$standalone: "yes",
 			},
@@ -32,10 +30,7 @@ export const convert = (
 					guid: getGuidFromProperty(bsddProperty),
 					status: PropertyStatus.active,
 					visibility: "child",
-					organisation: handleOrganization(
-						propertiesOnDictionary,
-						bsddProperty,
-					),
+					organisation: handleOrganization(),
 					dateOfCreation: formatDate(new Date()),
 					dateOfActivation: undefined, // TODO
 					dateOfRevision: undefined, // TODO
@@ -101,11 +96,11 @@ export const convert = (
 	return xmlBuilder.build(myInput);
 };
 
-const handleOrganization = (
-	propertiesOnDictionary: DictionaryPropertiesResponseContractV1,
-	bsddProperty: PropertyListItemContractV1,
-) => {
-	return {};
+const handleOrganization = () => {
+	return {
+		$name: "BSDD Import",
+		"#text": "445a9244-4107-493b-8afc-6b0215b2a602",
+	};
 };
 
 const formatDate = (date: Date): string => {

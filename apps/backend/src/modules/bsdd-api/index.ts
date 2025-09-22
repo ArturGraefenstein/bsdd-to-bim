@@ -1,1 +1,1 @@
-export * from "./dictionary.js";
+export * from "./convert-dictionary.js";

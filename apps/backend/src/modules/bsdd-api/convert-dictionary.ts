@@ -2,7 +2,7 @@ import { type MutationResolvers } from "@generated/resolvers-types.js";
 import type { Context } from "@context/context.js";
 import { createModule } from "@binder/create-module.js";
 import { isAuthenticated } from "@modules/auth/permissions.js";
-import { Api } from "../../bsdd-to-bim/types/swagger.types.js";
+import { Api } from "@modules/bsdd-api/swagger.types.js";
 
 const convertDictionaryResolver: MutationResolvers<Context>["convertDictionary"] =
 	async (_q, params) => {
