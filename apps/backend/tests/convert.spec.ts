@@ -1,10 +1,28 @@
 import { assert, describe, expect, it } from "vitest";
 import { convert } from "../src/bsdd-to-bim/services/convert";
+import * as fs from "node:fs";
 
 describe("convert", () => {
-	it("foo", () => {
-		const returned = convert(response);
-		console.log(returned);
+	it("foo", async () => {
+		const returned = await convert(response);
+		// console.log(returned[3]);
+
+		try {
+			await fs.writeFile(
+				"./upload.xml",
+				returned[3]!,
+				{
+					encoding: "utf8",
+				},
+				(err) => {
+					console.log(err);
+				},
+			);
+		} catch (err) {
+			throw new Error(
+				`Failed to write XML file to ${"x"}: ${(err as Error).message}`,
+			);
+		}
 	});
 });
 

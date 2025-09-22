@@ -3,21 +3,35 @@ import { xmlBuilder } from "../utils/xml-builder.utils.js";
 import { getGuidFromProperty } from "../property/utils/create-guid-from-property.utils.js";
 import { PropertyStatus } from "../property/types/property-status.types.js";
 
-import moment from "moment-timezone";
-import { getCountryByLocale } from "../utils/locale-countries.js";
+import moment, { lang } from "moment-timezone";
 import { PropertyQuantity } from "../property/types/quantity.types.js";
 import { PropertyDimension } from "../property/types/property-dimension.types.js";
 import { PropertyDataType } from "../property/types/property-data-type.types.js";
 import { PropertyUnit } from "../property/types/property-units.types.js";
 import type { DictionaryPropertiesResponseContractV1 } from "@modules/bsdd-api/swagger.types.js";
+import { getApi } from "../../modules/bsdd-api/api.js";
 
-export const convert = (
+export const convert = async (
 	propertiesOnDictionary: DictionaryPropertiesResponseContractV1,
-): string => {
-	const country = getCountryByLocale(
-		propertiesOnDictionary.defaultLanguageCode,
-	);
+): Promise<string[]> => {
+	const countryResponse = await getApi().countryGet();
+	const localResponse = await getApi().languageGet();
 
+	const countryName =
+		countryResponse.data.find(
+			(e) => e.code === propertiesOnDictionary.defaultLanguageCode,
+		)?.name ?? "Deutschland";
+
+	const language =
+		"Deutsch" ??
+		localResponse.data.find(
+			(e) => e.isoCode === propertiesOnDictionary.defaultLanguageCode,
+		)?.name;
+
+	console.log(countryName, language);
+
+	const locale = "de-DE"; // propertiesOnDictionary.defaultLanguageCode
+	const countryCode = "DE";
 	const myInput = propertiesOnDictionary?.properties?.map((bsddProperty) => {
 		return {
 			"?xml": {
@@ -32,55 +46,61 @@ export const convert = (
 					visibility: "child",
 					organisation: handleOrganization(),
 					dateOfCreation: formatDate(new Date()),
-					dateOfActivation: undefined, // TODO
-					dateOfRevision: undefined, // TODO
+					dateOfActivation: formatDate(new Date()),
+					dateOfRevision: formatDate(new Date()),
 					dateOfVersion: formatDate(new Date()),
 					versionNumber: 1,
 					revisionNumber: 1,
 					creatorsLanguage: {
-						$name: country.native_name, // TODO
-						$country: country.native_name,
-						"#text": propertiesOnDictionary.defaultLanguageCode,
+						$name: language,
+						$country: countryName,
+						"#text": locale,
 					},
 					namesInLanguage: {
 						name: bsddProperty.name,
 						language: {
-							$name: country.native_name, // TODO
-							$country: country.native_name,
-							"#text": propertiesOnDictionary.defaultLanguageCode,
+							$name: language,
+							$country: countryName,
+							"#text": locale,
 						},
 					},
 					definitionsInLanguage: {
 						definition: bsddProperty.name,
 						language: {
-							$name: country.native_name, // TODO
-							$country: country.native_name,
-							"#text": propertiesOnDictionary.defaultLanguageCode,
+							$name: language,
+							$country: countryName,
+							"#text": locale,
 						},
 					},
 					descriptionsInLanguage: {
 						description: bsddProperty.descriptionPart,
 						language: {
-							$name: country.native_name, // TODO
-							$country: country.native_name,
-							"#text": propertiesOnDictionary.defaultLanguageCode,
+							$name: language,
+							$country: countryName,
+							"#text": locale,
 						},
 					},
-					examplesInLanguage: undefined,
-					groupOfProperties: undefined,
+					groupOfProperties: [
+						{
+							$name: "Wand",
+							$versionNumber: 3,
+							$revisionNumber: 1,
+							"#text": "935a6e8d-af3b-4211-86b1-0ca4c08afdc1",
+						},
+					], // TODO: unknown
 					countryOfUse: {
-						$name: country.native_name, // TODO
-						"#text": propertiesOnDictionary.defaultLanguageCode,
+						$name: countryName,
+						"#text": countryCode,
 					},
 					countryOfOrigin: {
-						$name: country.native_name, // TODO
-						"#text": propertiesOnDictionary.defaultLanguageCode,
+						$name: countryName,
+						"#text": countryCode,
 					},
 					physicalQuantity: {
 						siUnit: PropertyQuantity.ohne,
 						language: {
-							$name: country.native_name, // TODO
-							$country: country.native_name,
+							$name: language, // TODO
+							$country: countryName,
 							"#text": propertiesOnDictionary.defaultLanguageCode,
 						},
 					},
@@ -88,12 +108,22 @@ export const convert = (
 					dataType: PropertyDataType["Aufzählung"],
 					dynamicProperty: "no",
 					units: PropertyUnit.unitless,
-					listOfPossibleValuesInLanguage: [],
+					listOfPossibleValuesInLanguage: [
+						{
+							possibleValue: "Laubholz",
+							language: {
+								$name: language,
+								$country: countryName,
+								"#text": locale,
+							},
+						},
+					],
+					// dateOfLastChanged: formatDate(new Date()),
 				},
 			},
 		};
 	});
-	return xmlBuilder.build(myInput);
+	return myInput?.map((e) => xmlBuilder.build(e)) ?? [];
 };
 
 const handleOrganization = () => {

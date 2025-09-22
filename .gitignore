@@ -140,3 +140,5 @@ packages/graphql/graphql.ts
 packages/graphql/schema.graphql
 **/__generated__/**
 apps/backend/data
+
+upload.xml
