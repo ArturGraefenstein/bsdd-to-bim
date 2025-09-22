@@ -13,7 +13,7 @@ import { getApi } from "../../modules/bsdd-api/api.js";
 
 export const convert = async (
 	propertiesOnDictionary: DictionaryPropertiesResponseContractV1,
-): Promise<string[]> => {
+): Promise<string> => {
 	const countryResponse = await getApi().countryGet();
 	const localResponse = await getApi().languageGet();
 
@@ -24,16 +24,17 @@ export const convert = async (
 
 	const language = localResponse.data.find((e) => e.isoCode === locale)?.name;
 
-	const myInput = propertiesOnDictionary?.properties?.map((bsddProperty) => {
-		return {
-			"?xml": {
-				$version: "1.0",
-				$encoding: "UTF-8",
-				$standalone: "yes",
-			},
-			Container: {
-				property: {
-					guid: getGuidFromProperty(bsddProperty),
+	const randomString = Math.random().toString(36).substring(2, 15);
+	const myInput = {
+		"?xml": {
+			$version: "1.0",
+			$encoding: "UTF-8",
+			$standalone: "yes",
+		},
+		Container: {
+			property: propertiesOnDictionary?.properties?.map((bsddProperty) => {
+				return {
+					guid: getGuidFromProperty(bsddProperty, randomString),
 					status: PropertyStatus.active,
 					visibility: "child",
 					organisation: handleOrganization(),
@@ -110,12 +111,11 @@ export const convert = async (
 							},
 						},
 					],
-					// dateOfLastChanged: formatDate(new Date()),
-				},
-			},
-		};
-	});
-	return myInput?.map((e) => xmlBuilder.build(e)) ?? [];
+				};
+			}),
+		},
+	};
+	return xmlBuilder.build(myInput);
 };
 
 const handleOrganization = () => {

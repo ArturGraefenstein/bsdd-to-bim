@@ -3,7 +3,8 @@ import type { PropertyListItemContractV1 } from "@modules/bsdd-api/swagger.types
 
 export const getGuidFromProperty = (
 	data: PropertyListItemContractV1,
+	salt: string,
 ): string => {
 	if (!data.code) throw new Error("Invalid code");
-	return deterministicUUID(data.code);
+	return deterministicUUID(data.code, salt);
 };
