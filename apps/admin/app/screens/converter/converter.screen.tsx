@@ -1,7 +1,7 @@
 import type { converter_convertDictionaryMutation } from "@relay/converter_convertDictionaryMutation.graphql";
 import { FieldPrimitives as Field } from "@thekeytechnology/epic-ui/field";
-
-import { useState } from "react";
+import { XIcon } from "lucide-react";
+import { Fragment, useState } from "react";
 import { useMutation } from "react-relay";
 
 import {
@@ -11,6 +11,7 @@ import {
 	HStack,
 	Stack,
 	TextInput,
+	Toast,
 } from "@package/design-system";
 
 import { CONVERT_DICTIONARY_MUTATION } from "~/screens/converter/converter.graphql";
@@ -34,11 +35,31 @@ export const ConverterScreen = () => {
 			},
 			onCompleted: (response) => {
 				const blob = response.convertDictionary.blob;
-				downloadXml(blob, `${input}.xml`);
-				window.alert("Download successfull.");
+				toaster.create({
+					title: "Conversion complete",
+					description: "Your download is ready.",
+					type: "info",
+					duration: 300000,
+					action: {
+						label: "Download",
+						onClick: () => {
+							downloadXml(blob, `${input}.xml`);
+							handleReset();
+						},
+					},
+					onStatusChange: (res) => {
+						if (res.status === "unmounted") {
+							handleReset();
+						}
+					},
+				});
 			},
 			onError: (e) => {
-				window.alert("Invalid url");
+				toaster.create({
+					title: "URL Invalid.",
+					description: "Please try another url.",
+					type: "error",
+				});
 				console.error(e);
 			},
 		});
@@ -78,6 +99,34 @@ export const ConverterScreen = () => {
 					</HStack>
 				</Stack>
 			</Card>
+			<Toast.Toaster toaster={toaster}>
+				{(toast) => (
+					<Toast.Root key={toast?.id}>
+						<Toast.Title>{toast?.title}</Toast.Title>
+						<Toast.Description>{toast?.description}</Toast.Description>
+						{toast.action ? (
+							<Toast.ActionTrigger asChild>
+								<Button variant="solid" size="sm">
+									{toast?.action?.label ?? ""}
+								</Button>
+							</Toast.ActionTrigger>
+						) : (
+							<Fragment />
+						)}
+						<Toast.CloseTrigger asChild>
+							<Button size="sm" variant="link">
+								<XIcon />
+							</Button>
+						</Toast.CloseTrigger>
+					</Toast.Root>
+				)}
+			</Toast.Toaster>
 		</DashboardLayout>
 	);
 };
+
+const toaster = Toast.createToaster({
+	placement: "bottom-end",
+	overlap: true,
+	gap: 16,
+});

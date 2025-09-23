@@ -6,3 +6,5 @@ export * from "./checkbox";
 export * from "./vstack";
 export * from "./card";
 export * from "./hstack";
+export * from "./toast";
+export * from "./icon";
