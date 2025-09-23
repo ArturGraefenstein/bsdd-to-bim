@@ -10,7 +10,8 @@
 		"dev": "tsx watch src/server.ts",
 		"typecheck": "tsc --noEmit",
 		"build": "tsc -p .",
-		"start": "node dist/server.js"
+		"start": "node dist/server.js",
+		"init-db": "docker exec -it mongo mongosh --eval 'rs.initiate({_id:\"rs0\", members:[{_id:0, host:\"localhost:27017\"}]})'"
 	},
 	"dependencies": {
 		"@azure/identity": "4.12.0",
