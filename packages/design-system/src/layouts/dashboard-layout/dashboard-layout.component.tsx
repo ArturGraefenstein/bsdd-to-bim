@@ -1,5 +1,5 @@
 import logo from "@assets/logo.png";
-import { Cog, LayoutDashboard, User, Wrench } from "lucide-react";
+import { Cog, Wrench } from "lucide-react";
 import type { FC } from "react";
 
 import { NavbarItem } from "@ui/navbar-item";

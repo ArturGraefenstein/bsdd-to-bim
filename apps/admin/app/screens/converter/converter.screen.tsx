@@ -72,9 +72,7 @@ export const ConverterScreen = () => {
 					<Field.Root>
 						<Field.Label>Dictionary Url (BSDD)</Field.Label>
 						<TextInput
-							placeholder={
-								"https://identifier.buildingsmart.org/uri/bs-agri/fruitvegs/1.6"
-							}
+							placeholder={"https://identifier.buildingsmart.org/example"}
 							type="text"
 							id="bsdd-dictionary"
 							name="dictionary-url-(bsdd)"
