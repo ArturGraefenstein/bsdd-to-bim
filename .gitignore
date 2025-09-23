@@ -142,3 +142,4 @@ packages/graphql/schema.graphql
 apps/backend/data
 
 upload.xml
+bim.xml
