@@ -9725,6 +9725,7 @@ __metadata:
     jsonwebtoken: "npm:9.0.2"
     pdfkit: "npm:0.17.2"
     prisma: "npm:6.15.0"
+    ts-pattern: "npm:5.8.0"
     tsx: "npm:4.20.4"
     typescript: "npm:5.9.2"
   languageName: unknown

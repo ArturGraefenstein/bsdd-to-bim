@@ -36,8 +36,8 @@ export const ConverterScreen = () => {
 			onCompleted: (response) => {
 				const blob = response.convertDictionary.blob;
 				toaster.create({
-					title: "Conversion complete",
-					description: "Your download is ready.",
+					title: "Imported in BIM Portal.",
+					description: "Download import sheet below just in case.",
 					type: "info",
 					duration: 300000,
 					action: {
@@ -101,13 +101,13 @@ export const ConverterScreen = () => {
 			</Card>
 			<Toast.Toaster toaster={toaster}>
 				{(toast) => (
-					<Toast.Root key={toast?.id}>
-						<Toast.Title>{toast?.title}</Toast.Title>
-						<Toast.Description>{toast?.description}</Toast.Description>
+					<Toast.Root key={toast.id}>
+						<Toast.Title>{toast.title}</Toast.Title>
+						<Toast.Description>{toast.description}</Toast.Description>
 						{toast.action ? (
 							<Toast.ActionTrigger asChild>
 								<Button variant="solid" size="sm">
-									{toast?.action?.label ?? ""}
+									{toast.action.label ?? ""}
 								</Button>
 							</Toast.ActionTrigger>
 						) : (

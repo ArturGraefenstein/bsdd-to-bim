@@ -31,7 +31,8 @@
 		"jose": "6.0.12",
 		"jsonwebtoken": "9.0.2",
 		"pdfkit": "0.17.2",
-		"prisma": "6.15.0"
+		"prisma": "6.15.0",
+		"ts-pattern": "5.8.0"
 	},
 	"devDependencies": {
 		"@graphql-codegen/cli": "5.0.7",
