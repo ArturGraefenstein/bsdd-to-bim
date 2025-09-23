@@ -1,90 +1,50 @@
-.import-to-bim {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    background: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    text-decoration: none;
-    white-space: nowrap;
-}
-
-.import-to-bim:hover {
-    background: #1d4ed8;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-}
-
-.import-to-bim:active {
-    transform: translateY(0);
-}
-
-.import-to-bim.loading {
-    opacity: 0.7;
-    cursor: not-allowed;
-}
-
-.import-to-bim.success {
-    background: #059669;
-}
-
-.import-to-bim.error {
-    background: #dc2626;
-}
-
 .bim-import-icon {
-    width: 16px;
-    height: 16px;
+	width: 16px;
+	height: 16px;
 }
 
 .bim-import-spinner {
-    width: 16px;
-    height: 16px;
-    border: 2px solid transparent;
-    border-top: 2px solid currentColor;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+	width: 16px;
+	height: 16px;
+	border: 2px solid transparent;
+	border-top: 2px solid currentColor;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
+	to {
+		transform: rotate(360deg);
+	}
 }
 
 .bim-notification {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 12px 16px;
-    border-radius: 6px;
-    color: white;
-    font-weight: 500;
-    z-index: 10000;
-    animation: slideIn 0.3s ease;
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	padding: 12px 16px;
+	border-radius: 6px;
+	color: white;
+	font-weight: 500;
+	z-index: 10000;
+	animation: slideIn 0.3s ease;
 }
 
 .bim-notification.success {
-    background: #059669;
+	background: #059669;
 }
 
 .bim-notification.error {
-    background: #dc2626;
+	background: #dc2626;
 }
 
 @keyframes slideIn {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
+	from {
+		transform: translateX(100%);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
 }
