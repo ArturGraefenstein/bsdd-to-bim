@@ -9,7 +9,14 @@ export const navbarItem = sva({
 			display: "flex",
 			paddingY: "0.5",
 		},
-		innerWrapper: { display: "flex", flexDirection: "row", rounded: "lg" },
+		innerWrapper: {
+			display: "flex",
+			flexDirection: "row",
+			rounded: "lg",
+			alignItems: "center",
+			gap: "2",
+			paddingLeft: "2",
+		},
 	},
 	variants: {
 		active: {

@@ -1,10 +1,8 @@
 import logo from "@assets/logo.png";
-import { ReactComponent as RowsIcon } from "@assets/rows.svg";
-import { ReactComponent as SettingsIcon } from "@assets/settings.svg";
-import { ReactComponent as DevicesIcon } from "@assets/tablet.svg";
-import { ReactComponent as UsersIcon } from "@assets/users.svg";
-import { NavbarItem } from "@ui/navbar-item";
+import { Cog, LayoutDashboard, User, Wrench } from "lucide-react";
 import type { FC } from "react";
+
+import { NavbarItem } from "@ui/navbar-item";
 
 import {
 	LeftWrappeClass,
@@ -24,14 +22,14 @@ export const DashboardLayout: FC<DashboardLayoutProps> = ({ children }) => {
 					<img className={LogoClass} src={logo} alt="main brand illustration" />
 				</div>
 				<div className={MenueItemsWrapperClass}>
-					<NavbarItem icon={<RowsIcon />} label="Projekte" path="/dashboard" />
-					<NavbarItem icon={<UsersIcon />} label="Benutzer" path="/settings" />
-					<NavbarItem icon={<DevicesIcon />} label="Geräte" path="/profile" />
 					<NavbarItem
-						icon={<SettingsIcon />}
-						label="Einstellungen"
-						path="/help"
+						icon={<LayoutDashboard />}
+						label="Dashboard"
+						path="/dashboard"
 					/>
+					<NavbarItem icon={<Wrench />} label="Converter" path="/converter" />
+					<NavbarItem icon={<User />} label="Geräte" path="/profile" />
+					<NavbarItem icon={<Cog />} label="Einstellungen" path="/help" />
 				</div>
 			</div>
 			<div className={RightWrapperClass}>{children}</div>
