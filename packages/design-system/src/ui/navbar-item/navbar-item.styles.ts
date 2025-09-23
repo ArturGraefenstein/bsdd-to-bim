@@ -16,6 +16,7 @@ export const navbarItem = sva({
 			alignItems: "center",
 			gap: "2",
 			paddingLeft: "2",
+			cursor: "pointer",
 		},
 	},
 	variants: {

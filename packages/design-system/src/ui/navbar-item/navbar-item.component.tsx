@@ -7,7 +7,8 @@ export const NavbarItem = ({ icon, label, path }: NavbarItemProps) => {
 	const onClick = () => {
 		window.location.href = path;
 	};
-	const classes = navbarItem({ active: true });
+	const isActive = window.location.href.includes(path);
+	const classes = navbarItem({ active: isActive });
 	return (
 		<div className={classes.root} onClick={onClick}>
 			<div className={classes.innerWrapper}>

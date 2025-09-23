@@ -8,3 +8,4 @@ export * from "./card";
 export * from "./hstack";
 export * from "./toast";
 export * from "./icon";
+export * from "./menu";

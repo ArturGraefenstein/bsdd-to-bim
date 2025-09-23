@@ -1,7 +1,5 @@
 import { useEffect, useRef } from "react";
 import pkg from "react-relay";
-const { commitLocalUpdate, RelayEnvironmentProvider } = pkg;
-
 import {
 	isRouteErrorResponse,
 	Links,
@@ -19,6 +17,8 @@ import { createRelayEnvironment } from "./network/relay-environment";
 import { useAuthStore } from "./store";
 
 import "@package/design-system/styled-system/styles.css";
+
+const { commitLocalUpdate, RelayEnvironmentProvider } = pkg;
 
 export const links: Route.LinksFunction = () => [
 	{ rel: "preconnect", href: "https://fonts.googleapis.com" },
