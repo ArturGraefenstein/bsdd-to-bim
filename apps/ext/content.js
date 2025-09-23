@@ -5,7 +5,7 @@ function getUri() {
 	// Filter elements whose text starts with 'https://'
 	const httpsElements = Array.from(allElements).filter((el) => {
 		const text = el.textContent?.trim() || "";
-		return text.startsWith("https:");
+		return text.startsWith("https://identifier");
 	});
 
 	return [...httpsElements].reverse().shift().innerHTML;
@@ -142,8 +142,8 @@ async function handleBimImport(button) {
 				"sec-fetch-mode": "cors",
 				"sec-fetch-site": "same-origin",
 			},
-			referrer: `http://localhost:4000/graphql?query=mutation+MyMutation+%7B%0A++convertDictionary%28%0A++++input%3A+%7Buri%3A+%22${encodeURIComponent(uri)}%22%7D%0A++%29+%7B%0A++++converted%0A++%7D%0A%7D`,
-			body: `{"query":"mutation MyMutation{convertDictionary(input:{uri:\\\"${uri}\\\"}){blob}}","operationName":"MyMutation"}`,
+			referrer: `http://localhost:4000/graphql?query=mutation+MyMutation+%7B%0A++convertDictionaryAndUpload%28%0A++++input%3A+%7Buri%3A+%22${encodeURIComponent(uri)}%22%7D%0A++%29+%7B%0A++++converted%0A++%7D%0A%7D`,
+			body: `{"query":"mutation MyMutation{convertDictionaryAndUpload(input:{uri:\\\"${uri}\\\"}){blob}}","operationName":"MyMutation"}`,
 			method: "POST",
 			mode: "cors",
 			credentials: "include",
@@ -154,7 +154,10 @@ async function handleBimImport(button) {
 		}
 
 		const responseData = await response.json();
-		downloadXml(responseData.data.convertDictionary.blob, `${uri}.xml`);
+		// downloadXml(
+		// 	responseData.data.convertDictionaryAndUpload.blob,
+		// 	`${uri}.xml`,
+		// );
 
 		// Show success state
 		button.classList.remove("loading");

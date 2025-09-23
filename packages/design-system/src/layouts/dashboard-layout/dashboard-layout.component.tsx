@@ -22,13 +22,7 @@ export const DashboardLayout: FC<DashboardLayoutProps> = ({ children }) => {
 					<img className={LogoClass} src={logo} alt="main brand illustration" />
 				</div>
 				<div className={MenueItemsWrapperClass}>
-					<NavbarItem
-						icon={<LayoutDashboard />}
-						label="Dashboard"
-						path="/dashboard"
-					/>
 					<NavbarItem icon={<Wrench />} label="Converter" path="/converter" />
-					<NavbarItem icon={<User />} label="Geräte" path="/profile" />
 					<NavbarItem icon={<Cog />} label="Einstellungen" path="/help" />
 				</div>
 			</div>

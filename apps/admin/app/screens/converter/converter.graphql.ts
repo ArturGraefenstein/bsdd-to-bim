@@ -1,9 +1,9 @@
 import { graphql } from "react-relay";
 export const CONVERT_DICTIONARY_MUTATION = graphql`
-	mutation converter_convertDictionaryMutation(
+	mutation converter_convertDictionaryAndDownloadMutation(
 		$input: ConvertDictionaryInput!
 	) {
-		convertDictionary(input: $input) {
+		convertDictionaryAndDownload(input: $input) {
 			blob
 		}
 	}

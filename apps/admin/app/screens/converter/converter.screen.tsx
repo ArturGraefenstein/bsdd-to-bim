@@ -1,4 +1,3 @@
-import type { converter_convertDictionaryMutation } from "@relay/converter_convertDictionaryMutation.graphql";
 import { FieldPrimitives as Field } from "@thekeytechnology/epic-ui/field";
 import { XIcon } from "lucide-react";
 import { Fragment, useState } from "react";
@@ -14,13 +13,15 @@ import {
 	Toast,
 } from "@package/design-system";
 
+import type { converter_convertDictionaryAndDownloadMutation } from "@relay/converter_convertDictionaryAndDownloadMutation.graphql";
 import { CONVERT_DICTIONARY_MUTATION } from "~/screens/converter/converter.graphql";
 import { downloadXml } from "~/screens/converter/converter.utils";
 
 export const ConverterScreen = () => {
-	const [commit, isInFlight] = useMutation<converter_convertDictionaryMutation>(
-		CONVERT_DICTIONARY_MUTATION,
-	);
+	const [commit, isInFlight] =
+		useMutation<converter_convertDictionaryAndDownloadMutation>(
+			CONVERT_DICTIONARY_MUTATION,
+		);
 	const [input, setInput] = useState("");
 
 	const handleReset = () => {
@@ -34,19 +35,13 @@ export const ConverterScreen = () => {
 				},
 			},
 			onCompleted: (response) => {
-				const blob = response.convertDictionary.blob;
+				const blob = response.convertDictionaryAndDownload.blob;
+				downloadXml(blob, `${input}.xml`);
 				toaster.create({
-					title: "Imported in BIM Portal.",
-					description: "Download import sheet below just in case.",
+					title: "Dictionary converted.",
+					description: "The dictionary has been converted successfully.",
 					type: "info",
 					duration: 300000,
-					action: {
-						label: "Download",
-						onClick: () => {
-							downloadXml(blob, `${input}.xml`);
-							handleReset();
-						},
-					},
 					onStatusChange: (res) => {
 						if (res.status === "unmounted") {
 							handleReset();
@@ -94,7 +89,7 @@ export const ConverterScreen = () => {
 							Clear
 						</Button>
 						<Button disabled={isInFlight} onClick={handleSubmit}>
-							Download
+							Convert and Download
 						</Button>
 					</HStack>
 				</Stack>
