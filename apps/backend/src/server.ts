@@ -20,7 +20,6 @@ import { loadFiles } from "@graphql-tools/load-files";
 
 const typeDefs = await loadFiles("src/**/*.graphql");
 
-console.log(process.env.JWT_SECRET);
 const yoga = createYoga<Context>({
 	schema: createSchema({
 		typeDefs,
