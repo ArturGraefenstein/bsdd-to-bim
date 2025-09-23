@@ -51,6 +51,20 @@ export const convertDictionary = async (uri: string) => {
 	const languages = await getApi().languageGet();
 
 	const salt = Math.random().toString(36).substring(2, 15);
+	const materialGroupClass: ClassContractV1 = {
+		code: "material",
+		name: "Material",
+		definition: "A substance that is used to make things.",
+		activationDateUtc: new Date().toISOString(),
+		versionDateUtc: new Date().toISOString(),
+		classType: "Material",
+		uri: "material",
+		status: "Active",
+		versionNumber: 1,
+		revisionNumber: 1,
+		creatorLanguageCode: "en-GB",
+		countryOfOrigin: "GB",
+	};
 
 	const properties = [];
 	for (const property of dictionary.data.properties || []) {
@@ -70,16 +84,52 @@ export const convertDictionary = async (uri: string) => {
 		countries.data,
 		languages.data,
 	);
-	const groupOfPropertiesInput = convertPropertyGroup(
+	const classesAsPropertyGroupInput = convertPropertyGroup(
 		dictionary.data,
 		cleanClasses || [],
 		properties,
 		salt,
 		countries.data,
 		languages.data,
+		materialGroupClass,
 	);
+	const groupOfPropertiesInput = convertPropertyGroup(
+		dictionary.data,
+		groupOfClases || [],
+		properties,
+		salt,
+		countries.data,
+		languages.data,
+		materialGroupClass,
+	);
+
+	const materialsGroupInput = [];
+	if (materials.length) {
+		const matieralClassInput = generateMaterialPropertyGroupInput(
+			materials,
+			salt,
+			countries.data,
+			languages.data,
+			materialGroupClass,
+		);
+		materialsGroupInput.push(matieralClassInput);
+		const matieralClassesInput = convertPropertyGroup(
+			dictionary.data,
+			materials || [],
+			properties,
+			salt,
+			countries.data,
+			languages.data,
+			materialGroupClass,
+		);
+		materialsGroupInput.push(...matieralClassesInput);
+	}
+
 	const xml = await generateXMLWithInputContainer({
-		propertyGroup: groupOfPropertiesInput.filter(Boolean),
+		propertyGroup: classesAsPropertyGroupInput
+			.filter(Boolean)
+			.concat(groupOfPropertiesInput)
+			.concat(materialsGroupInput),
 		property: propertiesInput,
 	});
 	return xml;
@@ -100,6 +150,96 @@ export const generateXMLWithInputContainer = async (
 	return xml;
 };
 
+export const generateMaterialPropertyGroupInput = (
+	materialClasses: ClassContractV1[],
+	salt: string,
+	countries: CountryContractV1[],
+	languages: LanguageContractV1[],
+	materialGroupClass: ClassContractV1,
+): Record<string, unknown> => {
+	const languageIsoCode = materialGroupClass.creatorLanguageCode!;
+	const countryCode = "GB";
+	const languageName = "English";
+	const countryName = "United Kingdom";
+
+	return {
+		guid: getGuidFromProperty(materialGroupClass, salt),
+		status: getStatus(materialGroupClass.status ?? ""),
+		visibility: "child",
+		organisation: handleOrganization(),
+		dateOfCreation: formatDate(new Date()),
+		dateOfDeactivation: materialGroupClass.deActivationDateUtc
+			? formatDate(new Date(materialGroupClass.deActivationDateUtc))
+			: undefined,
+		dateOfActivation: formatDate(
+			new Date(materialGroupClass.activationDateUtc),
+		),
+		dateOfRevision: formatDate(
+			new Date(
+				materialGroupClass.revisionDateUtc ?? materialGroupClass.versionDateUtc,
+			),
+		),
+		dateOfVersion: formatDate(new Date(materialGroupClass.versionDateUtc)),
+
+		versionNumber: Math.max(materialGroupClass.versionNumber ?? 1, 1),
+		revisionNumber: Math.max(materialGroupClass.revisionNumber ?? 1, 1),
+		creatorsLanguage: {
+			$name: getLanguageName(languages, "en-GB", "English"),
+			$country: getCountryName(countries, "GB", "United Kingdom"),
+			"#text": languageIsoCode,
+		},
+		namesInLanguage: {
+			name: materialGroupClass.name,
+			language: {
+				$name: languageName,
+				$country: countryName,
+				"#text": languageIsoCode,
+			},
+		},
+		definitionsInLanguage: materialGroupClass.definition
+			? {
+					definition: materialGroupClass.definition,
+					language: {
+						$name: languageName,
+						$country: countryName,
+						"#text": languageIsoCode,
+					},
+				}
+			: undefined,
+		countryOfUse: [countryCode].map((countryOfUse) => ({
+			$name: getCountryName(
+				countries,
+				countryOfUse ?? countryCode,
+				countryName,
+			),
+			"#text": countryOfUse ?? countryCode,
+		})),
+		countryOfOrigin: {
+			$name: getCountryName(
+				countries,
+				materialGroupClass.countryOfOrigin ?? countryCode,
+				countryName,
+			),
+			"#text": materialGroupClass.countryOfOrigin ?? countryCode,
+		},
+		categoryOfGroupOfProperties: {
+			"#text": "class",
+		},
+		childGroupOfProperties: materialClasses
+			.map((propertyDetails) => {
+				return propertyDetails
+					? {
+							$name: propertyDetails?.name,
+							$versionNumber: Math.max(propertyDetails.versionNumber ?? 1, 1),
+							$revisionNumber: Math.max(propertyDetails.revisionNumber ?? 1, 1),
+							"#text": getGuidFromProperty(propertyDetails, salt),
+						}
+					: undefined;
+			})
+			.filter(Boolean),
+	};
+};
+
 export const convertPropertyGroup = (
 	dictionary: DictionaryPropertiesResponseContractV1,
 	classes: ClassContractV1[],
@@ -107,6 +247,7 @@ export const convertPropertyGroup = (
 	salt: string,
 	countries: CountryContractV1[],
 	languages: LanguageContractV1[],
+	materialGroupClass: ClassContractV1,
 ): Record<string, unknown>[] => {
 	return classes?.map((classDetails) => {
 		const fallbackLanguageIsoCode =
@@ -128,6 +269,7 @@ export const convertPropertyGroup = (
 			status: getStatus(classDetails.status ?? ""),
 			visibility: "child",
 			organisation: handleOrganization(),
+
 			dateOfCreation: formatDate(new Date()),
 			dateOfDeactivation: classDetails.deActivationDateUtc
 				? formatDate(new Date(classDetails.deActivationDateUtc))
@@ -137,6 +279,7 @@ export const convertPropertyGroup = (
 				new Date(classDetails.revisionDateUtc ?? classDetails.versionDateUtc),
 			),
 			dateOfVersion: formatDate(new Date(classDetails.versionDateUtc)),
+
 			versionNumber: Math.max(classDetails.versionNumber ?? 1, 1),
 			revisionNumber: Math.max(classDetails.revisionNumber ?? 1, 1),
 			creatorsLanguage: {
@@ -194,6 +337,21 @@ export const convertPropertyGroup = (
 				"#text":
 					classDetails.classType === "Class" ? "class" : "alternative use",
 			},
+			parentGroupOfProperties:
+				classDetails.classType === "Material"
+					? {
+							$name: materialGroupClass?.name,
+							$versionNumber: Math.max(
+								materialGroupClass.versionNumber ?? 1,
+								1,
+							),
+							$revisionNumber: Math.max(
+								materialGroupClass.revisionNumber ?? 1,
+								1,
+							),
+							"#text": getGuidFromProperty(materialGroupClass, salt),
+						}
+					: undefined,
 			properties: classDetails.classProperties
 				?.map((classProperty) => {
 					const propertyDetails = properties.find(
