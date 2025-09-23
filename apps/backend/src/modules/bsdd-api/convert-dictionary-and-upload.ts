@@ -9,7 +9,7 @@ import { uploadDo } from "../../bsdd-to-bim/services/upload-do.js";
 import { match } from "ts-pattern";
 import { refreshToken2 } from "../../bsdd-to-bim/services/refresh.js";
 
-const convertDictionaryResolver: MutationResolvers<Context>["convertDictionary"] =
+const convertDictionaryAndUploadResolver: MutationResolvers<Context>["convertDictionaryAndUpload"] =
 	async (_q, params) => {
 		const { uri } = params.input;
 
@@ -75,9 +75,9 @@ const convertDictionaryResolver: MutationResolvers<Context>["convertDictionary"]
 		return { converted: true, blob: base64 };
 	};
 
-const convertDictionaryPermissions = allow;
+const convertDictionaryAndUploadPermissions = allow;
 
-export const convertDictionaryModule = createModule({
-	resolver: convertDictionaryResolver,
-	shield: convertDictionaryPermissions,
+export const convertDictionaryAndUploadModule = createModule({
+	resolver: convertDictionaryAndUploadResolver,
+	shield: convertDictionaryAndUploadPermissions,
 });

@@ -5,7 +5,7 @@ function getUri() {
 	// Filter elements whose text starts with 'https://'
 	const httpsElements = Array.from(allElements).filter((el) => {
 		const text = el.textContent?.trim() || "";
-		return text.startsWith("https:");
+		return text.startsWith("https://identifier");
 	});
 
 	return [...httpsElements].reverse().shift().innerHTML;
@@ -107,8 +107,8 @@ async function handleBimImport(button) {
 		// Show loading state
 		button.classList.add("loading");
 		button.innerHTML = `
-      <div class="bim-import-spinner"></div>
-      Importing...
+					<app-bsdd-button _ngcontent-ng-c2382797086="" size="2" text="Importing..." icon="assets/icons/open-new-tab.svg" tooltipdisabledtext="Import the dictionary to BIM" class="ml-1 mt-2"><div _ngcontent-ng-c3695380796="" class="mat-mdc-tooltip-trigger flex items-center bsdd-button text-nowrap bsdd-button-enabled bsdd-button-medium"><img _ngcontent-ng-c3695380796="" src="assets/icons/open-new-tab.svg" class="ng-star-inserted"><!----><span _ngcontent-ng-c3695380796="" class="pl-1">Importing...</span></div><!----></app-bsdd-button>
+  
     `;
 
 		// Extract data from the page
@@ -142,8 +142,8 @@ async function handleBimImport(button) {
 				"sec-fetch-mode": "cors",
 				"sec-fetch-site": "same-origin",
 			},
-			referrer: `http://localhost:4000/graphql?query=mutation+MyMutation+%7B%0A++convertDictionary%28%0A++++input%3A+%7Buri%3A+%22${encodeURIComponent(uri)}%22%7D%0A++%29+%7B%0A++++converted%0A++%7D%0A%7D`,
-			body: `{"query":"mutation MyMutation{convertDictionary(input:{uri:\\\"${uri}\\\"}){blob}}","operationName":"MyMutation"}`,
+			referrer: `http://localhost:4000/graphql?query=mutation+MyMutation+%7B%0A++convertDictionaryAndUpload%28%0A++++input%3A+%7Buri%3A+%22${encodeURIComponent(uri)}%22%7D%0A++%29+%7B%0A++++converted%0A++%7D%0A%7D`,
+			body: `{"query":"mutation MyMutation{convertDictionaryAndUpload(input:{uri:\\\"${uri}\\\"}){blob}}","operationName":"MyMutation"}`,
 			method: "POST",
 			mode: "cors",
 			credentials: "include",
@@ -154,16 +154,16 @@ async function handleBimImport(button) {
 		}
 
 		const responseData = await response.json();
-		downloadXml(responseData.data.convertDictionary.blob, `${uri}.xml`);
+		// downloadXml(
+		// 	responseData.data.convertDictionaryAndUpload.blob,
+		// 	`${uri}.xml`,
+		// );
 
 		// Show success state
 		button.classList.remove("loading");
 		button.classList.add("success");
 		button.innerHTML = `
-      <svg class="bim-import-icon" fill="currentColor" viewBox="0 0 20 20">
-        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-      </svg>
-      Imported!
+			<app-bsdd-button _ngcontent-ng-c2382797086="" size="2" text="Imported!" icon="assets/icons/open-new-tab.svg" tooltipdisabledtext="Import the dictionary to BIM" class="ml-1 mt-2"><div _ngcontent-ng-c3695380796="" class="mat-mdc-tooltip-trigger flex items-center bsdd-button text-nowrap bsdd-button-enabled bsdd-button-medium"><img _ngcontent-ng-c3695380796="" src="assets/icons/open-new-tab.svg" class="ng-star-inserted"><!----><span _ngcontent-ng-c3695380796="" class="pl-1">Imported!</span></div><!----></app-bsdd-button>
     `;
 
 		showNotification("Successfully imported to BIM!", "success");
@@ -180,10 +180,8 @@ async function handleBimImport(button) {
 		button.classList.remove("loading");
 		button.classList.add("error");
 		button.innerHTML = `
-      <svg class="bim-import-icon" fill="currentColor" viewBox="0 0 20 20">
-        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
-      </svg>
-      Failed
+     <app-bsdd-button _ngcontent-ng-c2382797086="" size="2" text="Failed" icon="assets/icons/open-new-tab.svg" tooltipdisabledtext="Import the dictionary to BIM" class="ml-1 mt-2"><div _ngcontent-ng-c3695380796="" class="mat-mdc-tooltip-trigger flex items-center bsdd-button text-nowrap bsdd-button-enabled bsdd-button-medium"><img _ngcontent-ng-c3695380796="" src="assets/icons/open-new-tab.svg" class="ng-star-inserted"><!----><span _ngcontent-ng-c3695380796="" class="pl-1">Failed</span></div><!----></app-bsdd-button>
+  
     `;
 
 		showNotification(`Import failed: ${error.message}`, "error");
@@ -198,13 +196,10 @@ async function handleBimImport(button) {
 
 // Create and inject the BIM import button
 function createBimImportButton() {
-	const button = document.createElement("button");
+	const button = document.createElement("app-bsdd-button-change-request");
 	button.className = "import-to-bim";
 	button.innerHTML = `
-    <svg class="bim-import-icon" fill="currentColor" viewBox="0 0 20 20">
-      <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
-    </svg>
-    Import to BIM
+<app-bsdd-button _ngcontent-ng-c2382797086="" size="2" text="Import to BIM" icon="assets/icons/open-new-tab.svg" tooltipdisabledtext="Import the dictionary to BIM" class="ml-1 mt-2"><div _ngcontent-ng-c3695380796="" class="mat-mdc-tooltip-trigger flex items-center bsdd-button text-nowrap bsdd-button-enabled bsdd-button-medium"><img _ngcontent-ng-c3695380796="" src="assets/icons/open-new-tab.svg" class="ng-star-inserted"><!----><span _ngcontent-ng-c3695380796="" class="pl-1">Import to BIM</span></div><!----></app-bsdd-button>
   `;
 
 	button.addEventListener("click", () => handleBimImport(button));
@@ -248,9 +243,9 @@ async function injectBimButton() {
 		const bimButton = createBimImportButton();
 
 		// Add some margin if there are other buttons
-		if (buttonContainer.children.length > 0) {
-			bimButton.style.marginLeft = "8px";
-		}
+		// if (buttonContainer.children.length > 0) {
+		// 	bimButton.style.marginLeft = "8px";
+		// }
 
 		buttonContainer.appendChild(bimButton);
 

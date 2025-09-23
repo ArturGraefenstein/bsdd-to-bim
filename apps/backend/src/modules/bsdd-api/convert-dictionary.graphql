@@ -23,5 +23,10 @@ input ConvertDictionaryInput {
 # ============================
 
 extend type Mutation {
-	convertDictionary(input: ConvertDictionaryInput!): ConvertDictionaryPayload!
+	convertDictionaryAndDownload(
+		input: ConvertDictionaryInput!
+	): ConvertDictionaryPayload!
+	convertDictionaryAndUpload(
+		input: ConvertDictionaryInput!
+	): ConvertDictionaryPayload!
 }
